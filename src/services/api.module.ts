@@ -4,8 +4,9 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
-import { AuthenticationService } from './services/authentication.service';
 import { TutorCourseAdminControllerService } from './services/tutor-course-admin-controller.service';
+import { StudentCourseAdminService } from './services/student-course-admin.service';
+import { AuthenticationService } from './services/authentication.service';
 import { CourseControllerService } from './services/course-controller.service';
 
 /**
@@ -16,8 +17,9 @@ import { CourseControllerService } from './services/course-controller.service';
   exports: [],
   declarations: [],
   providers: [
-    AuthenticationService,
     TutorCourseAdminControllerService,
+    StudentCourseAdminService,
+    AuthenticationService,
     CourseControllerService,
     ApiConfiguration
   ],

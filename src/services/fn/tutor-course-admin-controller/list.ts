@@ -6,12 +6,12 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { Course } from '../../models/course';
+import { CoursePublicDto } from '../../models/course-public-dto';
 
 export interface List$Params {
 }
 
-export function list(http: HttpClient, rootUrl: string, params?: List$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<Course>>> {
+export function list(http: HttpClient, rootUrl: string, params?: List$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<CoursePublicDto>>> {
   const rb = new RequestBuilder(rootUrl, list.PATH, 'get');
   if (params) {
   }
@@ -21,7 +21,7 @@ export function list(http: HttpClient, rootUrl: string, params?: List$Params, co
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<Array<Course>>;
+      return r as StrictHttpResponse<Array<CoursePublicDto>>;
     })
   );
 }

@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
-import { Course } from '../models/course';
+import { CoursePublicDto } from '../models/course-public-dto';
 import { PageableObject } from '../models/pageable-object';
 import { SortObject } from '../models/sort-object';
-export interface PageCourse {
-  content?: Array<Course>;
+export interface PageCoursePublicDto {
+  content?: Array<CoursePublicDto>;
   empty?: boolean;
   first?: boolean;
   last?: boolean;

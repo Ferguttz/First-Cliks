@@ -6,16 +6,16 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { Course } from '../../models/course';
+import { CoursePublicDto } from '../../models/course-public-dto';
 
 export interface Get$Params {
-  name: string;
+  id: number;
 }
 
-export function get(http: HttpClient, rootUrl: string, params: Get$Params, context?: HttpContext): Observable<StrictHttpResponse<Course>> {
+export function get(http: HttpClient, rootUrl: string, params: Get$Params, context?: HttpContext): Observable<StrictHttpResponse<CoursePublicDto>> {
   const rb = new RequestBuilder(rootUrl, get.PATH, 'get');
   if (params) {
-    rb.path('name', params.name, {});
+    rb.path('id', params.id, {});
   }
 
   return http.request(
@@ -23,9 +23,9 @@ export function get(http: HttpClient, rootUrl: string, params: Get$Params, conte
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<Course>;
+      return r as StrictHttpResponse<CoursePublicDto>;
     })
   );
 }
 
-get.PATH = '/courses/{name}';
+get.PATH = '/tutor/courses/{id}';

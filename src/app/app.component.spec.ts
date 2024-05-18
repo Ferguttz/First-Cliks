@@ -17,15 +17,13 @@ describe('AppComponent', () => {
   it(`should have the 'Daisy-UI' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.login).toEqual('Daisy-UI');
+    expect(app.title).toEqual('Daisy-UI');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Hello, Daisy-UI'
-    );
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, Daisy-UI');
   });
 });

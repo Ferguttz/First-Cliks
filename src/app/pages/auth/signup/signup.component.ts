@@ -1,12 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { AuthenticationService } from '../../../../services/services';
+import { RequestUserClientDto } from '../../../../services/models';
 import { AccountService } from '../../../services/account.service';
-import { JsonPipe } from '@angular/common';
+
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, JsonPipe],
+  imports: [RouterModule, ReactiveFormsModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })
@@ -22,7 +24,11 @@ export default class SignupComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(4)]],
     dateOfBirth: ['', [Validators.required]],
-    role: ['', [Validators.required]],
+    roleId: [0, [Validators.required]],
+    address: ['', [Validators.required]],
+    gender: ['', [Validators.required]],
+    photoRoute: [''],
+    description: ['', [Validators.required]],
   });
 
   errors: string[] = [];
@@ -36,12 +42,12 @@ export default class SignupComponent {
       return;
     }
     const formValue = this.form.value;
-
     this.accountService.signup(formValue).subscribe({
       next: (profile) => {
-        this.router.navigate(['/auth/login']);
+        this.router.navigate(['/auth/activate-account']);
       },
       error: (error) => {
+        console.log(error);
         if (error.error.status === 400) {
           if (error.error.error) {
             this.errors = error.error.error;

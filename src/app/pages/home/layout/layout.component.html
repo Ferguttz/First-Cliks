@@ -1,4 +1,4 @@
-<div class="navbar bg-primary py-5">
+<div class="navbar shadow-sm py-2">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -53,24 +53,19 @@
       </svg>
     </a>
   </div>
-  <div class="navbar-center hidden lg:flex">
+  <div class="navbar-center hidden lg:flex text-black">
     <ul class="menu menu-horizontal px-1 z-[1]">
-      <li><a routerLink="{{ courses }}">Explorar</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
+      <li><a routerLink="{{ courses }}">Busca a tu profesor</a></li>
+
+      @if (user?.role == "TUTOR") {
+      <li><a>Mi perfil (profesor)</a></li>
+      <li><a>Administrar mis cursos</a></li>
+      }
     </ul>
   </div>
   @if (user) {
-  <div id="nav-button" class="navbar-end pr-36">
-    <a class="btn">{{ user.firstName }}</a>
+  <div id="nav-button" class="navbar-end pr-12">
+    <a class="btn">{{ user.userName }}</a>
   </div>
   <div id="nav-button" class="navbar-end pr-36">
     <a (click)="logout()" class="btn">Cerrar sesión</a>

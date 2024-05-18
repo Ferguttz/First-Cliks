@@ -5,7 +5,7 @@
     - @tailwindcss/forms
 -->
 
-<section class="relative flex flex-wrap lg:h-screen lg:items-center">
+<!-- <section class="relative flex flex-wrap lg:h-screen lg:items-center">
   <div class="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
     <div class="mx-auto max-w-lg text-center">
       <h1 class="text-2xl font-bold sm:text-3xl">Get started today!</h1>
@@ -16,20 +16,7 @@
       </p>
     </div>
 
-    <form
-      #form="ngForm"
-      (ngSubmit)="login(form)"
-      class="mx-auto mb-0 mt-8 max-w-md space-y-4"
-    >
-      @if (errors.length) {
-      <div class="text-error">
-        <ul>
-          @for (error of errors; track error) {
-          <li>{{ error }}</li>
-          }
-        </ul>
-      </div>
-      }
+    <form action="#" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
       <div>
         <label for="email" class="sr-only">Email</label>
 
@@ -38,16 +25,7 @@
             type="email"
             class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter email"
-            name="email"
-            [(ngModel)]="authRequest.email"
-            required=""
-            email=""
-            #email="ngModel"
           />
-          <div class="text-error" [hidden]="email.valid || email.pristine">
-            @if(email.errors?.['required']) { El email es obligatorio } @else if
-            (email.errors?.['email']) { Ingrese un email válido }
-          </div>
 
           <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
             <svg
@@ -74,19 +52,9 @@
         <div class="relative">
           <input
             type="password"
-            name="password"
             class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter password"
-            [(ngModel)]="authRequest.password"
-            required=""
-            #password="ngModel"
           />
-          <div
-            class="text-error"
-            [hidden]="password.valid || password.pristine"
-          >
-            @if(password.errors?.['required']) { La contraseña es obligatoria }
-          </div>
 
           <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
             <svg
@@ -136,4 +104,91 @@
       class="absolute inset-0 h-full w-full object-cover"
     />
   </div>
-</section>
+</section> -->
+
+<div class="min-h-screen py-52 text-black">
+  <div class="container mx-auto">
+    <div
+      class="flex flex-col lg:flex-row w-10/12 lg:w-6/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden"
+    >
+      <div
+        class="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        "
+      ></div>
+      <div class="w-full lg:w-1/2 py-16 px-12">
+        <h2 class="text-3xl mb-4">Iniciar Sesión</h2>
+        <p class="mb-4">Inicia sesión para acceder a tu cuenta.</p>
+        <form #form="ngForm" (ngSubmit)="login(form)">
+          @if (errors.length) {
+          <div class="text-error">
+            <ul>
+              @for (error of errors; track error) {
+              <li>{{ error }}</li>
+              }
+            </ul>
+          </div>
+          }
+          <div class="mt-5">
+            Usuario
+            <input
+              type="text"
+              name="userName"
+              placeholder="Usuario"
+              class="border border-gray-400 py-1 px-2 w-full"
+              [(ngModel)]="authRequest.userName"
+              required=""
+              #userName="ngModel"
+            />
+          </div>
+          <div
+            class="text-error"
+            [hidden]="userName.valid || userName.pristine"
+          >
+            @if( userName.errors?.['required'] ) { El Usuraio obligatorio }
+            @else if (userName.errors?.['email']) { Ingrese un Usuario válido }
+          </div>
+          <div class="mt-5">
+            Contraseña
+            <input
+              type="password"
+              name="password"
+              placeholder="Contraseña"
+              class="border border-gray-400 py-1 px-2 w-full"
+              [(ngModel)]="authRequest.password"
+              required=""
+              #password="ngModel"
+            />
+          </div>
+          <div
+            class="text-error"
+            [hidden]="password.valid || password.pristine"
+          >
+            @if(password.errors?.['required']) { La contraseña es obligatoria }
+          </div>
+          <div class="mt-5 text-black">
+            <span>
+              Aún no tiene cuenta.
+              <a
+                [routerLink]="['/auth/signup']"
+                routerLinkActive="router-link-active"
+                class="font-semibold check-terms"
+              >
+                Regístrese aquí.</a
+              >
+            </span>
+          </div>
+
+          <div class="mt-5">
+            <button
+              class="w-full py-3 text-center gradient-text font-bold text-white"
+            >
+              Enviar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

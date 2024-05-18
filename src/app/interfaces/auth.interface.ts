@@ -1,5 +1,5 @@
 export interface AuthRequest {
-  email: string;
+  username: string;
   password: string;
 }
 
@@ -9,10 +9,6 @@ export interface AuthResponse {
 }
 
 export interface Profile {
-  id: Number;
   userName: string;
-  firstName: string;
-  lastName: string;
-  email: string;
   role: string;
 }

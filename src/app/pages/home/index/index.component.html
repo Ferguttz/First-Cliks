@@ -11,7 +11,9 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
   <div
     class="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-9 lg:ml-10"
   >
-    <div class="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
+    <div
+      class="max-w-xl xl:mx-40 text-center ltr:sm:text-left rtl:sm:text-right"
+    >
       <h1 class="text-3xl font-extrabold sm:text-5xl">
         Empieza
 
@@ -52,8 +54,71 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
     </div>
   </div>
 </section>
-<div class="flex flex-col w-full bg-gray-50">
-  <div class="divider divider-primary">Explora más</div>
+
+<!-- Prueba -->
+
+<ul>
+  <li><a href="#modal1">DESLIZAR</a></li>
+</ul>
+<div id="modal1" class="modalmask">
+  <div class="modalbox movedown">
+    <a href="#close" title="Close" class="close">X</a>
+    <div class=" text-black login">
+      <div
+        class="flex flex-col lg:flex-row  lg:w-6/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden"
+      >
+        <div
+          class="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          "
+        ></div>
+        <div class="w-full lg:w-1/2 py-16 px-12">
+          <h2 class="text-3xl mb-4">Iniciar Sesión</h2>
+          <p class="mb-4">Inicia sesión para acceder a tu cuenta.</p>
+          <form action="#">
+            <div class="mt-5">
+              Usuario
+              <input
+                type="text"
+                placeholder="Email"
+                class="border border-gray-400 py-1 px-2 w-full"
+              />
+            </div>
+            <div class="mt-5">
+              Contraseña
+              <input
+                type="password"
+                placeholder="Contraseña"
+                class="border border-gray-400 py-1 px-2 w-full"
+              />
+            </div>
+
+            <div class="mt-5 text-black">
+              <span>
+                Aún no tiene cuenta.
+                <a
+                  [routerLink]="['/auth/signup']"
+                  routerLinkActive="router-link-active"
+                  class="font-semibold check-terms"
+                >
+                  Regístrese aquí.</a
+                >
+              </span>
+            </div>
+
+            <div class="mt-5">
+              <button
+                class="w-full py-3 text-center gradient-text font-bold text-white"
+              >
+                Enviar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!--
@@ -62,47 +127,185 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
   This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
 -->
 
-<section class="bg-gray-50">
-  <div class="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-    <div class="md:flex md:items-end md:justify-between">
-      <div class="max-w-xl">
-        <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-          Tutores mejor valorados
-        </h2>
+<section class="container mx-auto px-36">
+  <section class="bg-gray-50 lg:mx-20">
+    <div class="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+      <div class="md:flex md:items-end md:justify-between">
+        <div class="max-w-xl">
+          <h2
+            class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
+          >
+            Tutores mejor valorados
+          </h2>
 
-        <p class="mt-6 max-w-lg leading-relaxed text-gray-700">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-          praesentium natus sapiente commodi. Aliquid sunt tempore iste
-          repellendus explicabo dignissimos placeat, autem harum dolore
-          reprehenderit quis! Quo totam dignissimos earum.
-        </p>
+          <p class="mt-6 max-w-lg leading-relaxed text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
+            praesentium natus sapiente commodi. Aliquid sunt tempore iste
+            repellendus explicabo dignissimos placeat, autem harum dolore
+            reprehenderit quis! Quo totam dignissimos earum.
+          </p>
+        </div>
+
+        <a
+          routerLink="{{ courses }}"
+          href="#"
+          class="mt-6 inline-flex shrink-0 items-center gap-2 rounded-full border border-primary px-5 py-3 text-primary transition hover:bg-primary hover:text-white md:mt-0"
+        >
+          <span class="font-medium"> Explorar </span>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="size-4 rtl:rotate-180"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            />
+          </svg>
+        </a>
       </div>
 
-      <a
-        routerLink="{{ courses }}"
-        href="#"
-        class="mt-6 inline-flex shrink-0 items-center gap-2 rounded-full border border-primary px-5 py-3 text-primary transition hover:bg-primary hover:text-white md:mt-0"
-      >
-        <span class="font-medium"> Explorar </span>
+      <div class="m-30">
+        <div class="md:flex grid mx-auto gap-8 mt-8 group">
+          <div
+            class="bg-black group-hover:blur-sm hover:!blur-none group-hover:scale-[0.85] hover:!scale-100 text-center p-8 rounded-xl cursor-pointer"
+          >
+            <img
+              class="rounded-full mx-auto my-3"
+              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              width="150px"
+            />
+            <h4 class="uppercase text-xl font-bold">Jose García</h4>
+            <p class="text-sm leading-7 my-3 font-light opacity-70">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+              fugiat reiciendis eligendi provident quis.
+            </p>
+            <button class="bg-primary py-2.5 px-8 rounded-full text-white">
+              Contactar
+            </button>
+          </div>
+          <div
+            class="bg-black group-hover:blur-sm hover:!blur-none group-hover:scale-[0.85] hover:!scale-100 text-center p-8 rounded-xl cursor-pointer"
+          >
+            <img
+              class="rounded-full mx-auto my-3"
+              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              width="150px"
+            />
+            <h4 class="uppercase text-xl font-bold">Jose García</h4>
+            <p class="text-sm leading-7 my-3 font-light opacity-70">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+              fugiat reiciendis eligendi provident quis.
+            </p>
+            <button class="bg-primary py-2.5 px-8 rounded-full text-white">
+              Contactar
+            </button>
+          </div>
+          <div
+            class="bg-black group-hover:blur-sm hover:!blur-none group-hover:scale-[0.85] hover:!scale-100 text-center p-8 rounded-xl cursor-pointer"
+          >
+            <img
+              class="rounded-full mx-auto my-3"
+              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              width="150px"
+            />
+            <h4 class="uppercase text-xl font-bold">Jose García</h4>
+            <p class="text-sm leading-7 my-3 font-light opacity-70">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+              fugiat reiciendis eligendi provident quis.
+            </p>
+            <button class="bg-primary py-2.5 px-8 rounded-full text-white">
+              Contactar
+            </button>
+          </div>
+        </div>
+      </div>
 
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="size-4 rtl:rotate-180"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+      <section class="bg-gray-50">
+        <div
+          class="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M14 5l7 7m0 0l-7 7m7-7H3"
-          />
-        </svg>
-      </a>
-    </div>
+          <div class="md:flex md:items-center md:justify-between">
+            <div class="bg-black">
+              <img
+                class=""
+                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                width="450px"
+              />
+            </div>
+            <div class="max-w-xl text-end flex flex-col">
+              <div class="m-0">
+                <h2
+                  class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
+                >
+                  Sobre nosotros
+                </h2>
 
-    <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+                <p class="mt-6 max-w-lg leading-relaxed text-gray-700">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aspernatur praesentium natus sapiente commodi. Aliquid sunt
+                  tempore iste repellendus explicabo dignissimos placeat, autem
+                  harum dolore reprehenderit quis! Quo totam dignissimos earum.
+                </p>
+              </div>
+              <div class="bg-slate-500 max-h mt-10">
+                <p>Contacta con nosotros</p>
+              </div>
+              <div class="bg-slate-500 max-h">
+                <p></p>
+                <p>93159483</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="bg-gray-50">
+        <div
+          class="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16"
+        >
+          <div class="md:flex md:items-end md:justify-center">
+            <div class="max-w-xl text-center">
+              <h2
+                class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
+              >
+                Conoce al equipo
+              </h2>
+              <div class="flex justify-between mt-11 gap-2">
+                <div class="grid">
+                  <img
+                    class="rounded-full mx-auto my-3"
+                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    width="200px"
+                  />
+                </div>
+
+                <div class="img-custom">
+                  <img
+                    class="rounded-full mx-auto my-3"
+                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    width="200px"
+                  />
+                </div>
+
+                <div class="img-custom">
+                  <img
+                    class="rounded-full mx-auto my-3"
+                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    width="200px"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
       <blockquote
         class="flex h-full flex-col justify-between card bg-base-100 shadow-xl"
       >
@@ -201,4 +404,7 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
       </blockquote>
     </div>
   </div>
+</section> -->
+    </div>
+  </section>
 </section>

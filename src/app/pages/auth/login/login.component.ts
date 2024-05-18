@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
-import { AuthRequest } from '../../../interfaces/auth.interface';
-import { FormsModule, NgForm } from '@angular/forms';
+import { AuthenticationRequestDto } from '../../../../services/models';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +17,8 @@ export default class LoginComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 
-  authRequest: AuthRequest = {
-    email: '',
+  authRequest: AuthenticationRequestDto = {
+    userName: '',
     password: '',
   };
 
@@ -34,7 +34,7 @@ export default class LoginComponent {
         this.router.navigate(['']);
       },
       error: (error) => {
-        if (error.error.status === 403) {
+        if (error.error.errorCode) {
           this.errors.push('Error en el email o contraseña');
         }
       },

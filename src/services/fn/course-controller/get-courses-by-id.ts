@@ -6,17 +6,16 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { Pageable } from '../../models/pageable';
-import { PageCourse } from '../../models/page-course';
+import { CoursePublicDto } from '../../models/course-public-dto';
 
-export interface Paginate$Params {
-  pageable: Pageable;
+export interface GetCoursesById$Params {
+  name: string;
 }
 
-export function paginate(http: HttpClient, rootUrl: string, params: Paginate$Params, context?: HttpContext): Observable<StrictHttpResponse<PageCourse>> {
-  const rb = new RequestBuilder(rootUrl, paginate.PATH, 'get');
+export function getCoursesById(http: HttpClient, rootUrl: string, params: GetCoursesById$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<CoursePublicDto>>> {
+  const rb = new RequestBuilder(rootUrl, getCoursesById.PATH, 'get');
   if (params) {
-    rb.query('pageable', params.pageable, {});
+    rb.query('name', params.name, {});
   }
 
   return http.request(
@@ -24,9 +23,9 @@ export function paginate(http: HttpClient, rootUrl: string, params: Paginate$Par
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<PageCourse>;
+      return r as StrictHttpResponse<Array<CoursePublicDto>>;
     })
   );
 }
 
-paginate.PATH = '/courses';
+getCoursesById.PATH = '/courses/search';

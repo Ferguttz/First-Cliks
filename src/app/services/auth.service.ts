@@ -3,6 +3,10 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { AuthRequest, AuthResponse } from '../interfaces/auth.interface';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs';
+import {
+  AuthenticationRequestDto,
+  AuthenticationResponse,
+} from '../../services/models';
 
 const authKey = 'bookstoreweb0324_auth';
 
@@ -11,7 +15,7 @@ const authKey = 'bookstoreweb0324_auth';
 })
 export class AuthService {
   private http = inject(HttpClient);
-  private _auth = signal<AuthResponse | null>(null);
+  private _auth = signal<AuthenticationResponse | null>(null);
 
   auth = computed(() => this._auth());
 
@@ -23,9 +27,12 @@ export class AuthService {
     }
   }
 
-  login(authRequest: AuthRequest) {
+  login(authRequest: AuthenticationRequestDto) {
     return this.http
-      .post<AuthResponse>(`${environment.apiBase}/auth/token`, authRequest)
+      .post<AuthenticationResponse>(
+        `${environment.apiBase}/auth/authenticate`,
+        authRequest
+      )
       .pipe(
         map((response) => {
           localStorage.setItem(authKey, JSON.stringify(response));

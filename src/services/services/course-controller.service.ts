@@ -9,14 +9,16 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { Course } from '../models/course';
-import { get } from '../fn/course-controller/get';
-import { Get$Params } from '../fn/course-controller/get';
+import { CoursePublicDto } from '../models/course-public-dto';
+import { getCourse } from '../fn/course-controller/get-course';
+import { GetCourse$Params } from '../fn/course-controller/get-course';
+import { getCoursesById } from '../fn/course-controller/get-courses-by-id';
+import { GetCoursesById$Params } from '../fn/course-controller/get-courses-by-id';
 import { getLast } from '../fn/course-controller/get-last';
 import { GetLast$Params } from '../fn/course-controller/get-last';
-import { PageCourse } from '../models/page-course';
-import { paginate } from '../fn/course-controller/paginate';
-import { Paginate$Params } from '../fn/course-controller/paginate';
+import { PageCoursePublicDto } from '../models/page-course-public-dto';
+import { paginate1 } from '../fn/course-controller/paginate-1';
+import { Paginate1$Params } from '../fn/course-controller/paginate-1';
 
 @Injectable({ providedIn: 'root' })
 export class CourseControllerService extends BaseService {
@@ -24,53 +26,78 @@ export class CourseControllerService extends BaseService {
     super(config, http);
   }
 
-  /** Path part for operation `paginate()` */
-  static readonly PaginatePath = '/courses';
+  /** Path part for operation `paginate1()` */
+  static readonly Paginate1Path = '/courses';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `paginate()` instead.
+   * To access only the response body, use `paginate1()` instead.
    *
    * This method doesn't expect any request body.
    */
-  paginate$Response(params: Paginate$Params, context?: HttpContext): Observable<StrictHttpResponse<PageCourse>> {
-    return paginate(this.http, this.rootUrl, params, context);
+  paginate1$Response(params: Paginate1$Params, context?: HttpContext): Observable<StrictHttpResponse<PageCoursePublicDto>> {
+    return paginate1(this.http, this.rootUrl, params, context);
   }
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `paginate$Response()` instead.
+   * To access the full response (for headers, for example), `paginate1$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  paginate(params: Paginate$Params, context?: HttpContext): Observable<PageCourse> {
-    return this.paginate$Response(params, context).pipe(
-      map((r: StrictHttpResponse<PageCourse>): PageCourse => r.body)
+  paginate1(params: Paginate1$Params, context?: HttpContext): Observable<PageCoursePublicDto> {
+    return this.paginate1$Response(params, context).pipe(
+      map((r: StrictHttpResponse<PageCoursePublicDto>): PageCoursePublicDto => r.body)
     );
   }
 
-  /** Path part for operation `get()` */
-  static readonly GetPath = '/courses/{name}';
+  /** Path part for operation `getCourse()` */
+  static readonly GetCoursePath = '/courses/{courseId}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `get()` instead.
+   * To access only the response body, use `getCourse()` instead.
    *
    * This method doesn't expect any request body.
    */
-  get$Response(params: Get$Params, context?: HttpContext): Observable<StrictHttpResponse<Course>> {
-    return get(this.http, this.rootUrl, params, context);
+  getCourse$Response(params: GetCourse$Params, context?: HttpContext): Observable<StrictHttpResponse<CoursePublicDto>> {
+    return getCourse(this.http, this.rootUrl, params, context);
   }
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `get$Response()` instead.
+   * To access the full response (for headers, for example), `getCourse$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  get(params: Get$Params, context?: HttpContext): Observable<Course> {
-    return this.get$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Course>): Course => r.body)
+  getCourse(params: GetCourse$Params, context?: HttpContext): Observable<CoursePublicDto> {
+    return this.getCourse$Response(params, context).pipe(
+      map((r: StrictHttpResponse<CoursePublicDto>): CoursePublicDto => r.body)
+    );
+  }
+
+  /** Path part for operation `getCoursesById()` */
+  static readonly GetCoursesByIdPath = '/courses/search';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getCoursesById()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getCoursesById$Response(params: GetCoursesById$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<CoursePublicDto>>> {
+    return getCoursesById(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getCoursesById$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getCoursesById(params: GetCoursesById$Params, context?: HttpContext): Observable<Array<CoursePublicDto>> {
+    return this.getCoursesById$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Array<CoursePublicDto>>): Array<CoursePublicDto> => r.body)
     );
   }
 
@@ -83,7 +110,7 @@ export class CourseControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getLast$Response(params?: GetLast$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<Course>>> {
+  getLast$Response(params?: GetLast$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<CoursePublicDto>>> {
     return getLast(this.http, this.rootUrl, params, context);
   }
 
@@ -93,9 +120,9 @@ export class CourseControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getLast(params?: GetLast$Params, context?: HttpContext): Observable<Array<Course>> {
+  getLast(params?: GetLast$Params, context?: HttpContext): Observable<Array<CoursePublicDto>> {
     return this.getLast$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Array<Course>>): Array<Course> => r.body)
+      map((r: StrictHttpResponse<Array<CoursePublicDto>>): Array<CoursePublicDto> => r.body)
     );
   }
 

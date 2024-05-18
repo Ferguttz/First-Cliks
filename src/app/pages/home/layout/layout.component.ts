@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
@@ -14,6 +14,7 @@ export default class LayoutComponent {
   courses = './courses';
 
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   get user() {
     return this.authService.auth()?.user;
@@ -21,5 +22,6 @@ export default class LayoutComponent {
 
   logout() {
     this.authService.logout();
+    this.router.navigate(['']);
   }
 }

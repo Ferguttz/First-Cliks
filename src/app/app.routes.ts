@@ -15,6 +15,12 @@ export const routes: Routes = [
         title: 'Registro de usuario',
         loadComponent: () => import('./pages/auth/signup/signup.component'),
       },
+      {
+        path: 'activate-account',
+        title: 'Activación Cuenta',
+        loadComponent: () =>
+          import('./pages/auth/activate-account/activate-account.component'),
+      },
     ],
   },
   {

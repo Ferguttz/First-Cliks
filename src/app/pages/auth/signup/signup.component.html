@@ -5,7 +5,7 @@
     - @tailwindcss/forms
 -->
 
-<section class="bg-gray-100 min-h-screen">
+<!-- <section class="bg-gray-100">
   <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
       <div class="lg:col-span-2 lg:py-12">
@@ -25,7 +25,150 @@
           </address>
         </div>
       </div>
+
       <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
+        <form action="#" class="space-y-4">
+          <div>
+            <label class="sr-only" for="username">Nombre de usuario</label>
+            <input
+              class="w-full rounded-lg border-gray-200 p-3 text-sm"
+              placeholder="Nombre usuario"
+              type="text"
+              id="username"
+            />
+          </div>
+          <div>
+            <label class="sr-only" for="name">Nombre</label>
+            <input
+              class="w-full rounded-lg border-gray-200 p-3 text-sm"
+              placeholder="Nombre"
+              type="text"
+              id="name"
+            />
+          </div>
+          <div>
+            <label class="sr-only" for="name">Nombre</label>
+            <input
+              class="w-full rounded-lg border-gray-200 p-3 text-sm"
+              placeholder="Apellidos"
+              type="text"
+              id="name"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label class="sr-only" for="email">Email</label>
+              <input
+                class="w-full rounded-lg border-gray-200 p-3 text-sm"
+                placeholder="Email"
+                type="email"
+                id="email"
+              />
+            </div>
+
+            <div>
+              <label class="sr-only" for="phone">Phone</label>
+              <input
+                class="w-full rounded-lg border-gray-200 p-3 text-sm"
+                placeholder="contraseña"
+                type="password"
+                id="password"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
+            <div>
+              <label
+                for="Option1"
+                class="block w-full cursor-pointer rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-black has-[:checked]:border-black has-[:checked]:bg-black has-[:checked]:text-white"
+                tabindex="0"
+              >
+                <input
+                  class="sr-only"
+                  id="Option1"
+                  type="radio"
+                  tabindex="-1"
+                  name="option"
+                />
+
+                <span class="text-sm"> Tutor </span>
+              </label>
+            </div>
+
+            <div>
+              <label
+                for="Option3"
+                class="block w-full cursor-pointer rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-black has-[:checked]:border-black has-[:checked]:bg-black has-[:checked]:text-white"
+                tabindex="0"
+              >
+                <input
+                  class="sr-only"
+                  id="Option3"
+                  type="radio"
+                  tabindex="-1"
+                  name="option"
+                />
+
+                <span class="text-sm"> Alumno </span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="sr-only" for="message">Message</label>
+
+            <textarea
+              class="w-full rounded-lg border-gray-200 p-3 text-sm"
+              placeholder="Message"
+              rows="8"
+              id="message"
+            ></textarea>
+          </div>
+
+          <div class="mt-4">
+            <button
+              type="submit"
+              class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
+            >
+              Send Enquiry
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<div class="min-h-screen py-32 text-black">
+  <div class="container mx-auto">
+    <div
+      class="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden"
+    >
+      <div
+        class="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        "
+      >
+        <h1 class="text-white text-3xl mb-3">
+          <a
+            [routerLink]="['/auth/login']"
+            routerLinkActive="router-link-active"
+            >Bienvenido</a
+          >
+        </h1>
+        <div>
+          <p class="text-white">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+            suspendisse aliquam varius rutrum purus maecenas ac
+          </p>
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2 py-16 px-12">
+        <h2 class="text-3xl mb-4">Regístrate</h2>
+        <p class="mb-4">Create una cuenta. Sólo tardará unos minutos.</p>
         @if (errors.length) {
         <div class="text-error">
           <ul>
@@ -35,28 +178,47 @@
           </ul>
         </div>
         }
-        <form
-          action="POST"
-          [formGroup]="form"
-          (ngSubmit)="signup()"
-          class="space-y-4"
-        >
-          <!-- INPUT USERNAME -->
-          <label class="input input-bordered flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              class="w-4 h-4 opacity-70"
-            >
-              <path
-                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
-              />
-            </svg>
+        <form action="POST" [formGroup]="form" (ngSubmit)="signup()">
+          <div class="grid grid-cols-2 gap-5">
+            <!-- INPUT NOMBRE  -->
             <input
               type="text"
-              class="grow"
-              placeholder="Username"
+              placeholder="Nombre"
+              class="border border-gray-400 py-1 px-2"
+              formControlName="firstName"
+            />
+            <div
+              class="text-error"
+              [hidden]="
+                form.get('firstName')?.valid || form.get('firstName')?.pristine
+              "
+            >
+              @if(form.get('firstName')?.errors?.["required"]) { El Nombre es
+              obligatorio }
+            </div>
+            <!-- INPUT APELLIDO  -->
+            <input
+              type="text"
+              placeholder="Apellido"
+              class="border border-gray-400 py-1 px-2"
+              formControlName="lastName"
+            />
+            <div
+              class="text-error"
+              [hidden]="
+                form.get('lastName')?.valid || form.get('lastName')?.pristine
+              "
+            >
+              @if(form.get('lastName')?.errors?.["required"]) { El apellido es
+              obligatorio }
+            </div>
+          </div>
+          <div class="mt-5">
+            <!-- INPUT USERNAME -->
+            <input
+              type="text"
+              placeholder="Usuario"
+              class="border border-gray-400 py-1 px-2 w-full"
               formControlName="userName"
             />
             <div
@@ -68,52 +230,68 @@
               @if(form.get('userName')?.errors?.["required"]) { El Username es
               obligatorio }
             </div>
-          </label>
-
-          <!-- INPUT NOMBRE -->
-          <label class="input input-bordered flex items-center gap-2">
+          </div>
+          <!-- INPUT DIRECCION  -->
+          <div class="mt-5">
             <input
               type="text"
-              formControlName="firstName"
-              class="grow"
-              placeholder="Nombre"
+              placeholder="Dirección"
+              class="border border-gray-400 py-1 px-2 w-full"
+              formControlName="address"
             />
             <div
               class="text-error"
               [hidden]="
-                form.get('firstName')?.valid || form.get('firstName')?.pristine
+                form.get('address')?.valid || form.get('address')?.pristine
               "
             >
-              @if(form.get('firstName')?.errors?.["required"]) { El Nombre es
-              obligatorio }
+              @if(form.get('address')?.errors?.["required"]) { La dirección es
+              Obligatoria }
             </div>
-          </label>
-
-          <!-- INPUT APELLIDOS -->
-          <label class="input input-bordered flex items-center gap-2">
+          </div>
+          <!-- INPUT EMAIL  -->
+          <div class="mt-5">
             <input
               type="text"
-              formControlName="lastName"
-              class="grow"
-              placeholder="Apellidos"
+              placeholder="Email"
+              class="border border-gray-400 py-1 px-2 w-full"
+              formControlName="email"
+            />
+            <div
+              class="text-error"
+              [hidden]="form.get('email')?.valid || form.get('email')?.pristine"
+            >
+              @if(form.get('email')?.errors?.["required"]) {El email es
+              obligatorio} @else if (form.get('email')?.errors?.["email"]) {
+              Ingrese un email válido}
+            </div>
+          </div>
+          <!-- INPUT PASSWORD  -->
+          <div class="mt-5">
+            <input
+              type="password"
+              placeholder="Contraseña"
+              class="border border-gray-400 py-1 px-2 w-full"
+              formControlName="password"
             />
             <div
               class="text-error"
               [hidden]="
-                form.get('lastName')?.valid || form.get('lastName')?.pristine
+                form.get('password')?.valid || form.get('password')?.pristine
               "
             >
-              @if(form.get('lastName')?.errors?.["required"]) { El apellido es
-              obligatorio }
+              @if(form.get('password')?.errors?.["required"]) {La contraseña es
+              obligatorio} @else if
+              (form.get('password')?.errors?.["minlength"]) { Deben ser al menos
+              4 carácteres}
             </div>
-          </label>
-
-          <!-- INPUT FECHA NACIMIENTO -->
-          <label class="input input-bordered flex items-center gap-2">
+          </div>
+          <!-- INPUT DATE -->
+          <div class="grid grid-cols-2 gap-5 mt-5">
             <input
-              type="text"
-              class="grow"
-              placeholder="dd-mm-yyyy  (Fecha nacimiento)"
+              type="date"
+              placeholder="Fecha"
+              class="border border-gray-400 py-1 px-2"
               formControlName="dateOfBirth"
             />
             <div
@@ -126,80 +304,13 @@
               @if(form.get('dateOfBirth')?.errors?.["dateOfBirth"]) { fecha
               nacimiento obligatorio }
             </div>
-          </label>
-
-          <!-- INPUT EMAIL -->
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div>
-              <label class="input input-bordered flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  class="w-4 h-4 opacity-70"
-                >
-                  <path
-                    d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z"
-                  />
-                  <path
-                    d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z"
-                  />
-                </svg>
-                <input
-                  type="text"
-                  formControlName="email"
-                  class="grow"
-                  placeholder="Email"
-                />
-              </label>
-              <div
-                class="text-error"
-                [hidden]="
-                  form.get('email')?.valid || form.get('email')?.pristine
-                "
-              >
-                @if(form.get('email')?.errors?.["required"]) {El email es
-                obligatorio} @else if (form.get('email')?.errors?.["email"]) {
-                Ingrese un email válido}
-              </div>
-            </div>
-            <!-- INPUT PASSWORD -->
-            <div>
-              <label class="input input-bordered flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  class="w-4 h-4 opacity-70"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-                <input
-                  type="password"
-                  formControlName="password"
-                  class="grow"
-                  placeholder="Contraseña"
-                />
-              </label>
-              <div
-                class="text-error"
-                [hidden]="
-                  form.get('password')?.valid || form.get('password')?.pristine
-                "
-              >
-                @if(form.get('password')?.errors?.["required"]) {La contraseña
-                es obligatorio} @else if
-                (form.get('password')?.errors?.["minlength"]) { Deben ser al
-                menos 4 carácteres}
-              </div>
-            </div>
+            <!-- <input
+              type="number"
+              placeholder="Número de teléfono"
+              class="border border-gray-400 py-1 px-2"
+            /> -->
           </div>
-
-          <!-- INPUT TUTOR/STUDENT -->
+          <!-- INPUT ROLE -->
           <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
             <div>
               <label
@@ -212,9 +323,9 @@
                   id="TUTOR"
                   type="radio"
                   tabindex="-1"
-                  name="role"
-                  value="TUTOR"
-                  formControlName="role"
+                  name="roleId"
+                  value="2"
+                  formControlName="roleId"
                 />
 
                 <span class="text-sm"> Tutor </span>
@@ -232,21 +343,68 @@
                   id="STUDENT"
                   type="radio"
                   tabindex="-1"
-                  name="role"
-                  value="STUDENT"
-                  formControlName="role"
+                  name="roleId"
+                  value="3"
+                  formControlName="roleId"
                 />
 
                 <span class="text-sm"> Alumno </span>
               </label>
             </div>
           </div>
-
-          <!-- ENVIAR -->
-          <div class="mt-4">
+          <!-- <div class="mt-5 flex flex-auto justify-evenly gap-1 text-white">
+            <button value="Tutor" class="student w-full py-2">Tutor</button>
+            <button value="Tutor" class="teacher w-full py-2">
+              Estudiante
+            </button>
+          </div> -->
+          <!-- INPUT DESCRIPCIÓN -->
+          <div class="mt-5">
+            <p>descripción</p>
+            <textarea
+              formControlName="description"
+              rows="4"
+              cols="36"
+              placeholder="descripción"
+              class="border-4 border-cyan-100"
+            ></textarea>
+            <div
+              class="text-error"
+              [hidden]="
+                form.get('description')?.valid ||
+                form.get('description')?.pristine
+              "
+            >
+              @if(form.get('description')?.errors?.["required"]) { La
+              descripción es Obligatoria }
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="gender" class="form-label">Genero</label>
+            <select
+              type="text"
+              class="form-control"
+              id="gender"
+              formControlName="gender"
+            >
+              <option value="" disabled>-----</option>
+              <option value="Hombre">Hombre</option>
+              <option value="mujer">Mujer</option>
+            </select>
+          </div>
+          <div class="mt-5 text-black">
+            <input type="checkbox" class="border border-gray-400" />
+            <span>
+              Acepto los
+              <a href="#" class="font-semibold check-terms"
+                >Terminos y Condiciones</a
+              >
+              de uso.
+            </span>
+          </div>
+          <div class="mt-5">
             <button
-              type="submit"
-              class="inline-block w-full rounded-lg bg-primary px-5 py-3 font-medium text-white sm:w-auto"
+              class="w-full py-3 text-center gradient-text font-bold text-white"
             >
               Enviar
             </button>
@@ -255,5 +413,4 @@
       </div>
     </div>
   </div>
-</section>
-{{ form.controls.role.status | json }}
+</div>
