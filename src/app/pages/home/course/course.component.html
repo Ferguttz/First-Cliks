@@ -1,1 +1,29 @@
-<p>course works!</p>
+@if (course) {
+<div class="card card-side bg-base-100 shadow-xl">
+  <figure>
+    <img [src]="course.coverPath" alt="Course" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">{{ course.name }}</h2>
+    <p>{{ course.description }}</p>
+    <div class="px-6 pt-4 pb-2 justify-evenly">
+      @for (course of course.techStack; track course.techStack) {
+      <span
+        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+        >{{ course.techStack }}</span
+      >
+      }
+    </div>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Enroll</button>
+    </div>
+  </div>
+</div>
+<div class="card w-96 bg-base-100 shadow-xl">
+  @for (review of course.studentReview; track $index) {
+  <div class="card-body">
+    <p>"{{ review }}"</p>
+  </div>
+  }
+</div>
+}

@@ -2,38 +2,52 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CoursePublicDto, Pageable } from '../../../../services/models';
 import { CourseControllerService } from '../../../../services/services';
 import { Paginate1$Params } from '../../../../services/fn/course-controller/paginate-1';
+import { Observable, Observer } from 'rxjs';
+import { CourseService } from '../../../services/course.service';
+import { CourseCardComponent } from '../shared/course-card/course-card.component';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [],
+  imports: [CourseCardComponent],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css',
 })
 export default class CoursesComponent implements OnInit {
-  private courseService = inject(CourseControllerService);
-
+  // private courseOpenAPI = inject(CourseControllerService);
+  private courseService = inject(CourseService);
   courses: CoursePublicDto[] = [];
 
-  pageable: Pageable = {
-    page: 1,
-    size: 5,
-    sort: Array<string>('name'),
-  };
-
-  params: Paginate1$Params = {
-    pageable: this.pageable,
-  };
+  courses2?: Array<CoursePublicDto> = [];
+  page?: number = 0;
+  last?: Boolean = false;
 
   ngOnInit(): void {
-    this.courseService
-      .paginate1$Response(this.params)
-      .subscribe((coursePage) => {
-        console.log(coursePage);
-      });
+    // this.courseService.getLastCourses().subscribe((courses) => {
+    //   this.courses = courses;
+    //   console.log(this.courses);
+    // });
 
-    this.courseService.getLast().subscribe((coursePage) => {
-      console.log(coursePage);
+    this.courseService.paginate().subscribe((coursePage) => {
+      this.courses2 = coursePage.content;
+      this.page = coursePage.number;
+      this.last = coursePage.last;
+      console.log(this.courses2);
     });
+  }
+
+  loadMoreCourses() {
+    if (this.last) {
+      return;
+    }
+    if (this.page != undefined) {
+      this.courseService.paginate(5, this.page + 1).subscribe((coursePage) => {
+        if (coursePage.content != undefined && this.courses2 != undefined) {
+          this.courses2.push(...coursePage.content);
+        }
+        this.page = coursePage.number;
+        this.last = coursePage.last;
+      });
+    }
   }
 }

@@ -1,4 +1,7 @@
+import { Title } from '@angular/platform-browser';
 import { Routes } from '@angular/router';
+import { tutorGuard } from './helpers/tutor.guard';
+import { studentGuard } from './helpers/student.guard';
 
 export const routes: Routes = [
   {
@@ -34,14 +37,59 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/home/index/index.component'),
       },
       {
-        path: 'courses/:slug',
+        path: 'courses/:id',
         title: 'detalles del curso',
-        loadComponent: () => import('./pages/home/courses/courses.component'),
+        loadComponent: () => import('./pages/home/course/course.component'),
       },
       {
         path: 'courses',
         title: 'Explorar',
         loadComponent: () => import('./pages/home/courses/courses.component'),
+      },
+    ],
+  },
+  {
+    path: 'tutor',
+    title: 'Tutor',
+    canActivate: [tutorGuard],
+    loadComponent: () => import('./pages/home/layout/layout.component'),
+    children: [
+      {
+        path: '',
+        title: 'Inicio',
+        loadComponent: () => import('./pages/home/index/index.component'),
+      },
+      {
+        path: 'courses',
+        title: 'Listado',
+        loadComponent: () =>
+          import('./pages/tutor/course-list/course-list.component'),
+      },
+      {
+        path: 'admin',
+        title: 'administrar',
+        loadComponent: () =>
+          import('./pages/tutor/course-form/course-form.component'),
+      },
+    ],
+  },
+  {
+    path: 'student',
+    title: 'Student',
+    canActivate: [studentGuard],
+    loadComponent: () => import('./pages/home/layout/layout.component'),
+    children: [
+      {
+        path: 'courses',
+        title: 'Listado',
+        loadComponent: () =>
+          import('./pages/student/course-list/course-list.component'),
+      },
+      {
+        path: 'adminEnroll',
+        title: 'admin',
+        loadComponent: () =>
+          import('./pages/student/course-enrolled/course-enrolled.component'),
       },
     ],
   },

@@ -59,7 +59,11 @@
 
       @if (user?.role == "TUTOR") {
       <li><a>Mi perfil (profesor)</a></li>
-      <li><a>Administrar mis cursos</a></li>
+      <li><a routerLink="./tutor/courses">Administrar mis cursos</a></li>
+      <!---->
+      } @if (user?.role == "STUDENT") {
+      <li><a>Mi perfil (alumno)</a></li>
+      <li><a routerLink="./student/courses">Administrar mis cursos</a></li>
       }
     </ul>
   </div>

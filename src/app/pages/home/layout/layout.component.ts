@@ -11,7 +11,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export default class LayoutComponent {
   login = './auth/login';
-  courses = './courses';
+  courses = '/courses';
 
   private authService = inject(AuthService);
   private router = inject(Router);
