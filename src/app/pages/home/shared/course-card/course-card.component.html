@@ -1,7 +1,7 @@
 <a [routerLink]="['/courses', course.id]" class="flex flex-auto">
   <div>
     <img
-      [src]="course.coverPath"
+      [src]="course.coverPath || '' | apiImg"
       alt="Teacher"
       class="h-36 m-4 object-cover rounded-full"
     />

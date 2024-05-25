@@ -3,12 +3,10 @@ import { environment } from '../../environments/environment';
 
 @Pipe({
   name: 'apiImg',
-  standalone: true
+  standalone: true,
 })
 export class ApiImgPipe implements PipeTransform {
-
   transform(path: string): string {
-    return `${environment.apiBase}/media/${path}`;
+    return `${environment.apiBase}/media/public/${path}`;
   }
-
 }

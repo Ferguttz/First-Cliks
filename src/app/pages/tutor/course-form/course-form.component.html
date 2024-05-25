@@ -13,10 +13,110 @@
   }
   <br />
   @if (form) {
-  <form action="POST"></form>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <label class="form-control w-full max-w-xs">
+      <div class="label">
+        <span class="label-text">Nombre Curso</span>
+      </div>
+      <input
+        type="text"
+        placeholder="Type here"
+        class="input input-bordered w-full max-w-xs"
+        name="name"
+        formControlName="name"
+      />
+    </label>
+    <label class="form-control w-full max-w-xs">
+      <div class="label">
+        <span class="label-text">Nivel</span>
+      </div>
+      <select
+        class="select select-bordered"
+        formControlName="level"
+        name="level"
+      >
+        <option disabled selected>Nivel del Curso</option>
+        <option>ENTRY</option>
+        <option>INTERMEDIATE</option>
+        <option>ADVANCE</option>
+      </select>
+    </label>
+
+    <div class="flex flex-row items-center">
+      <label class="form-control w-full max-w-xs">
+        <div class="label">
+          <span class="label-text">Tecnologías</span>
+        </div>
+        <input
+          type="text"
+          placeholder="Type here"
+          class="input input-bordered w-full max-w-xs"
+          name="techStack2"
+          #techStack
+        />
+      </label>
+      <button
+        class="btn btn-outline mt-10"
+        (click)="addTechStack(techStack.value)"
+      >
+        Añadir
+      </button>
+      @for (item of techs; track $index) {
+      <input
+        type="text"
+        placeholder="{{ item }}"
+        class="input input-bordered w-full max-w-52"
+        #tech
+        disabled
+      />
+      <button (click)="deleteTechStack(tech.placeholder)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-square-rounded-x"
+          width="44"
+          height="44"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#2c3e50"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M10 10l4 4m0 -4l-4 4" />
+          <path
+            d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"
+          />
+        </svg>
+      </button>
+      }
+    </div>
+
+    <label class="form-control">
+      <div class="label">
+        <span class="label-text">Descriopción del curso</span>
+      </div>
+      <textarea
+        placeholder="Bio"
+        class="textarea textarea-bordered textarea-xs w-full max-w-xs"
+        name="description"
+        formControlName="description"
+      ></textarea>
+    </label>
+    <label class="form-control">
+      <input
+        type="file"
+        accept=".png,.jpg,.jpeg"
+        class="file-input file-input-bordered w-full max-w-xs"
+        (change)="uploadFile($event, 'coverPath')"
+      />
+    </label>
+
+    <button class="btn">Crear</button>
+  </form>
   }
 
-  <form #form="ngForm" (ngSubmit)="create(form)">
+  <!-- <form #form="ngForm" (ngSubmit)="create(form)">
     <label class="form-control w-full max-w-xs">
       <div class="label">
         <span class="label-text">Nombre Curso</span>
@@ -99,7 +199,7 @@
       ></textarea>
     </label>
     <button class="btn">Crear</button>
-  </form>
+  </form> -->
   <br />
   <br />
   <br />
