@@ -5,11 +5,13 @@ import { Paginate1$Params } from '../../../../services/fn/course-controller/pagi
 import { Observable, Observer } from 'rxjs';
 import { CourseService } from '../../../services/course.service';
 import { CourseCardComponent } from '../shared/course-card/course-card.component';
+import { RouterModule } from '@angular/router';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [CourseCardComponent],
+  imports: [CourseCardComponent, RouterModule, InfiniteScrollModule],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css',
 })
@@ -32,7 +34,7 @@ export default class CoursesComponent implements OnInit {
       this.courses2 = coursePage.content;
       this.page = coursePage.number;
       this.last = coursePage.last;
-      console.log(this.courses2);
+      console.log(coursePage.content);
     });
   }
 
@@ -40,8 +42,9 @@ export default class CoursesComponent implements OnInit {
     if (this.last) {
       return;
     }
+
     if (this.page != undefined) {
-      this.courseService.paginate(5, this.page + 1).subscribe((coursePage) => {
+      this.courseService.paginate(6, this.page + 1).subscribe((coursePage) => {
         if (coursePage.content != undefined && this.courses2 != undefined) {
           this.courses2.push(...coursePage.content);
         }

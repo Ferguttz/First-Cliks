@@ -71,7 +71,13 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/tutor/profile/profile.component'),
       },
       {
-        path: 'admin',
+        path: 'admin/new',
+        title: 'administrar',
+        loadComponent: () =>
+          import('./pages/tutor/course-form/course-form.component'),
+      },
+      {
+        path: 'admin/edit/:id',
         title: 'administrar',
         loadComponent: () =>
           import('./pages/tutor/course-form/course-form.component'),

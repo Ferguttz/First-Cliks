@@ -14,6 +14,7 @@ import { ApiImgPipe } from '../../../shared/api-img.pipe';
 import { Get$Params } from '../../../../services/fn/tutor-course-admin-controller/get';
 import { CourseService } from '../../../services/course.service';
 import { Observable, from } from 'rxjs';
+import { Delete$Params } from '../../../../services/fn/tutor-course-admin-controller/delete';
 
 @Component({
   selector: 'app-course-form',
@@ -31,7 +32,7 @@ export default class CourseFormComponent implements OnInit {
   private fb = inject(FormBuilder);
 
   errors: string[] = [];
-  course?: CourseDto;
+  //course?: CourseDto;
   form?: FormGroup;
   courseExists?: CoursePublicDto;
 
@@ -60,6 +61,14 @@ export default class CourseFormComponent implements OnInit {
             name: [course.name, [Validators.required]],
             techStack: [course.techStack, [Validators.required]],
           });
+          console.log(this.form);
+          console.log(this.form.get('techStack')?.value);
+          if (Array.isArray(this.form.get('techStack')?.value)) {
+            this.form.get('techStack')?.value.forEach((element: any) => {
+              let item: string = element.techStack;
+              this.techs.push(item);
+            });
+          }
         });
     } else {
       this.form = this.fb.group({
@@ -112,23 +121,36 @@ export default class CourseFormComponent implements OnInit {
 
     let request: Observable<Course>;
 
-    if (!this.course) {
-      request = this.courseTutorAdmin.create({ body: this.form!.value });
-    } else {
+    if (this.courseExists) {
       let id = parseInt(this.courseId || '0');
       request = this.courseTutorAdmin.update({
         id: id,
         body: this.form!.value,
       });
+    } else {
+      request = this.courseTutorAdmin.create({ body: this.form!.value });
     }
     request.subscribe({
       next: (course) => {
-        this.router.navigate(['/tutor/profile']);
+        this.router.navigate(['/tutor/courses']);
       },
       error: (error) => {
         this.errors = error.error.errors;
       },
     });
+  }
+
+  deleteCourse() {
+    if (this.courseExists) {
+      let courseId: Delete$Params = {
+        id: this.courseExists.id || 0,
+      };
+      this.courseTutorAdmin.delete(courseId).subscribe({
+        next: (course) => {
+          this.router.navigate(['/tutor/courses']);
+        },
+      });
+    }
   }
   // create(form: NgForm) {
   //   if (form.value.techStack1 != '') {

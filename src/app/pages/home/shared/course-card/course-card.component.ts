@@ -13,6 +13,7 @@ import { ApiImgPipe } from '../../../../shared/api-img.pipe';
 })
 export class CourseCardComponent {
   @Input({ required: true }) course!: CoursePublicDto;
+  @Input({ required: true }) linkPath!: string;
 
   sutdentStars(i: number) {
     return new Array(i);

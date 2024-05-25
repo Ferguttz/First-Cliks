@@ -15,13 +15,18 @@ export class CourseService {
     );
   }
 
-  paginate(size: number = 5, page: number = 0) {
+  paginate(size: number = 6, page: number = 0) {
     let params = new HttpParams();
     params = params.append('size', size);
     params = params.append('page', page);
     params = params.append('sort', 'name');
 
-    return this.http.get<PageCoursePublicDto>(`${environment.apiBase}/courses`);
+    return this.http.get<PageCoursePublicDto>(
+      `${environment.apiBase}/courses`,
+      {
+        params: params,
+      }
+    );
   }
 
   getById(id: number) {

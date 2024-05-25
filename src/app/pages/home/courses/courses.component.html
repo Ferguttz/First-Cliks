@@ -228,6 +228,8 @@
   <section
     id="Projects"
     class="w-fit mx-auto lg:w-fit grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-8 gap-x-14 mt-10 mb-5"
+    infinite-scroll
+    (scrolled)="loadMoreCourses()"
   >
     <!-- Porfesor 1 -->
     <div class="relative">
@@ -474,12 +476,16 @@
     <!--Fin profesor 2-->
 
     <!-- BUCLE -->
+
     @for (course of courses2; track course.id) {
     <div class="relative">
       <div
         class="bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
       >
-        <app-course-card [course]="course"></app-course-card>
+        <app-course-card
+          [course]="course"
+          [linkPath]="'/courses'"
+        ></app-course-card>
       </div>
     </div>
     }
