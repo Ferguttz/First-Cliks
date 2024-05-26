@@ -6,15 +6,16 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { CourseDto } from '../../models/course-dto';
-import { CoursePublicDto } from '../../models/course-public-dto';
+import { UploadMediaResponse } from '../../models/upload-media-response';
 
-export interface Create$Params {
-      body: CourseDto
+export interface Upload$Params {
+      body?: {
+'file': Blob;
+}
 }
 
-export function create(http: HttpClient, rootUrl: string, params: Create$Params, context?: HttpContext): Observable<StrictHttpResponse<CoursePublicDto>> {
-  const rb = new RequestBuilder(rootUrl, create.PATH, 'post');
+export function upload(http: HttpClient, rootUrl: string, params?: Upload$Params, context?: HttpContext): Observable<StrictHttpResponse<UploadMediaResponse>> {
+  const rb = new RequestBuilder(rootUrl, upload.PATH, 'post');
   if (params) {
     rb.body(params.body, 'application/json');
   }
@@ -24,9 +25,9 @@ export function create(http: HttpClient, rootUrl: string, params: Create$Params,
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<CoursePublicDto>;
+      return r as StrictHttpResponse<UploadMediaResponse>;
     })
   );
 }
 
-create.PATH = '/tutor/courses';
+upload.PATH = '/media/upload';

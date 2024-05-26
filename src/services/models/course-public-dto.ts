@@ -13,4 +13,5 @@ export interface CoursePublicDto {
   studentStars?: number;
   techStack?: Array<TechStack>;
   tutor?: TutorProfilePublic;
+  updatedDate?: string;
 }

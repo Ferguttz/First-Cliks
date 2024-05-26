@@ -46,6 +46,14 @@ export const routes: Routes = [
         title: 'Explorar',
         loadComponent: () => import('./pages/home/courses/courses.component'),
       },
+      {
+        path: 'courses/tutor/:tutorId',
+        title: 'Cursos del profesor',
+        loadComponent: () =>
+          import(
+            './pages/home/tutor-courses-public/tutor-courses-public.component'
+          ),
+      },
     ],
   },
   {

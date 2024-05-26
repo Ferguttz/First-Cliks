@@ -15,7 +15,7 @@ import { AccountService } from '../../../services/account.service';
 export default class SignupComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
-  private accountService = inject(AccountService);
+  private accountService = inject(AuthenticationService);
 
   form = this.fb.group({
     userName: ['', [Validators.required]],
@@ -42,7 +42,7 @@ export default class SignupComponent {
       return;
     }
     const formValue = this.form.value;
-    this.accountService.signup(formValue).subscribe({
+    this.accountService.register({ body: this.form!.value }).subscribe({
       next: (profile) => {
         this.router.navigate(['/auth/activate-account']);
       },

@@ -23,29 +23,27 @@
             <img
               class="rounded-full"
               width="150px"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              [src]="tutorProfile.photoRoute || '' | apiImg"
               alt=""
             />
           </div>
           <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
-            Jose García
+            {{ this.tutorProfile.firstName + " " + this.tutorProfile.lastName }}
           </h1>
           <h3 class="text-gray-600 font-lg text-semibold leading-6">
             Profesor de HTML y CSS.
           </h3>
           <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur non
-            deserunt
+            {{ this.tutorProfile.description }}
           </p>
-          <ul
-            class="bg-info text-black hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm"
-          >
+
+          <ul [ngClass]="colorEnabled(this.tutorProfile.enabled)">
             <li class="flex items-center py-3">
               <span>Estátus </span>
               <span class="ml-auto"
                 ><span class="-1 px-2 rounded text-white text-sm"
-                  >Activo</span
+                  >@if (this.tutorProfile.enabled) {Activo} @else
+                  {Inactivo}</span
                 ></span
               >
             </li>
@@ -131,15 +129,15 @@
             <div class="grid md:grid-cols-2 text-sm">
               <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Nombre</div>
-                <div class="px-4 py-2">Jose</div>
+                <div class="px-4 py-2">{{ this.tutorProfile.firstName }}</div>
               </div>
               <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Apellido</div>
-                <div class="px-4 py-2">García</div>
+                <div class="px-4 py-2">{{ this.tutorProfile.lastName }}</div>
               </div>
               <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Género</div>
-                <div class="px-4 py-2">Hombre</div>
+                <div class="px-4 py-2">{{ this.tutorProfile.gender }}</div>
               </div>
               <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Número de contacto.</div>
@@ -147,19 +145,21 @@
               </div>
               <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Dirección</div>
-                <div class="px-4 py-2">Calle San Vegas</div>
+                <div class="px-4 py-2">{{ this.tutorProfile.address }}</div>
               </div>
               <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Email.</div>
                 <div class="px-4 py-2">
-                  <a class="text-skills" href="mailto:jane@example.com"
-                    >josegarciavega&#64;gmail.com</a
+                  <a
+                    class="text-skills"
+                    href="mailto:{{ this.tutorProfile.email }}"
+                    >{{ this.tutorProfile.email }}</a
                   >
                 </div>
               </div>
               <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Fecha de nacimiento</div>
-                <div class="px-4 py-2">23/01/1995</div>
+                <div class="px-4 py-2">{{ this.tutorProfile.dateOfBirth }}</div>
               </div>
             </div>
           </div>
@@ -209,6 +209,9 @@
                   <div class="text-skills">Angular</div>
                   <div class="text-gray-500 text-xs">March 2020 - Now</div>
                 </li>
+                <button class="btn" [routerLink]="['/tutor/courses']">
+                  Mis Cursos
+                </button>
               </ul>
             </div>
             <div>
@@ -281,6 +284,7 @@
           </div>
           <!-- End of Experience and education grid -->
         </div>
+
         <!-- End of profile tab -->
       </div>
     </div>

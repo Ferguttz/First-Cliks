@@ -9,7 +9,6 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { Course } from '../models/course';
 import { CoursePublicDto } from '../models/course-public-dto';
 import { create } from '../fn/tutor-course-admin-controller/create';
 import { Create$Params } from '../fn/tutor-course-admin-controller/create';
@@ -140,7 +139,7 @@ export class TutorCourseAdminControllerService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  create$Response(params: Create$Params, context?: HttpContext): Observable<StrictHttpResponse<Course>> {
+  create$Response(params: Create$Params, context?: HttpContext): Observable<StrictHttpResponse<CoursePublicDto>> {
     return create(this.http, this.rootUrl, params, context);
   }
 
@@ -150,9 +149,9 @@ export class TutorCourseAdminControllerService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  create(params: Create$Params, context?: HttpContext): Observable<Course> {
+  create(params: Create$Params, context?: HttpContext): Observable<CoursePublicDto> {
     return this.create$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Course>): Course => r.body)
+      map((r: StrictHttpResponse<CoursePublicDto>): CoursePublicDto => r.body)
     );
   }
 

@@ -7,6 +7,8 @@ import {
   AuthenticationRequestDto,
   AuthenticationResponse,
 } from '../../services/models';
+import { routes } from '../app.routes';
+import { Router } from '@angular/router';
 
 const authKey = 'bookstoreweb0324_auth';
 
@@ -16,6 +18,7 @@ const authKey = 'bookstoreweb0324_auth';
 export class AuthService {
   private http = inject(HttpClient);
   private _auth = signal<AuthenticationResponse | null>(null);
+  private router = inject(Router);
 
   auth = computed(() => this._auth());
 
@@ -45,5 +48,6 @@ export class AuthService {
   logout() {
     localStorage.removeItem(authKey);
     this._auth.set(null);
+    this.router.navigate(['']);
   }
 }

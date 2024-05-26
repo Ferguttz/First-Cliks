@@ -18,7 +18,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 export default class CoursesComponent implements OnInit {
   // private courseOpenAPI = inject(CourseControllerService);
   private courseService = inject(CourseService);
-  courses: CoursePublicDto[] = [];
 
   courses2?: Array<CoursePublicDto> = [];
   page?: number = 0;

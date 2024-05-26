@@ -10,7 +10,7 @@ import { AuthService } from '../../../services/auth.service';
   styleUrl: './layout.component.css',
 })
 export default class LayoutComponent {
-  login = './auth/login';
+  login = '/auth/login';
   courses = '/courses';
   course = './course';
   signup = './auth/signup';

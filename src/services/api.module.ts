@@ -6,7 +6,10 @@ import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { TutorCourseAdminControllerService } from './services/tutor-course-admin-controller.service';
 import { StudentCourseAdminService } from './services/student-course-admin.service';
+import { MediaControllerService } from './services/media-controller.service';
 import { AuthenticationService } from './services/authentication.service';
+import { TutorProfileControllerService } from './services/tutor-profile-controller.service';
+import { StudentControllerProfileService } from './services/student-controller-profile.service';
 import { CourseControllerService } from './services/course-controller.service';
 
 /**
@@ -19,7 +22,10 @@ import { CourseControllerService } from './services/course-controller.service';
   providers: [
     TutorCourseAdminControllerService,
     StudentCourseAdminService,
+    MediaControllerService,
     AuthenticationService,
+    TutorProfileControllerService,
+    StudentControllerProfileService,
     CourseControllerService,
     ApiConfiguration
   ],

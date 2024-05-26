@@ -6,17 +6,15 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { CourseDto } from '../../models/course-dto';
-import { CoursePublicDto } from '../../models/course-public-dto';
 
-export interface Create$Params {
-      body: CourseDto
+export interface GetResource$Params {
+  filename: string;
 }
 
-export function create(http: HttpClient, rootUrl: string, params: Create$Params, context?: HttpContext): Observable<StrictHttpResponse<CoursePublicDto>> {
-  const rb = new RequestBuilder(rootUrl, create.PATH, 'post');
+export function getResource(http: HttpClient, rootUrl: string, params: GetResource$Params, context?: HttpContext): Observable<StrictHttpResponse<Blob>> {
+  const rb = new RequestBuilder(rootUrl, getResource.PATH, 'get');
   if (params) {
-    rb.body(params.body, 'application/json');
+    rb.path('filename', params.filename, {});
   }
 
   return http.request(
@@ -24,9 +22,9 @@ export function create(http: HttpClient, rootUrl: string, params: Create$Params,
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<CoursePublicDto>;
+      return r as StrictHttpResponse<Blob>;
     })
   );
 }
 
-create.PATH = '/tutor/courses';
+getResource.PATH = '/media/public/{filename}';

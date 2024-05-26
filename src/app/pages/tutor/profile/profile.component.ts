@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
+import { ProfileService } from '../../../services/profile.service';
+import { TutorPrivateProfileDto } from '../../../../services/models';
+import { CommonModule } from '@angular/common';
+import { ApiImgPipe } from '../../../shared/api-img.pipe';
+import { RouterModule } from '@angular/router';
 
 interface Course {
   id: string;
@@ -11,13 +16,16 @@ interface Course {
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CarouselModule],
+  imports: [CarouselModule, CommonModule, ApiImgPipe, RouterModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
 export default class ProfileComponent {
+  private tutorProfileService = inject(ProfileService);
+  tutorProfile: TutorPrivateProfileDto = {};
   courses: Course[] = [];
   responsiveOptions: any[] = [];
+  hola = 3;
 
   ngOnInit() {
     this.courses = [
@@ -65,5 +73,21 @@ export default class ProfileComponent {
         numScroll: 1,
       },
     ];
+
+    this.tutorProfileService.getProfileTutor().subscribe((tutor) => {
+      this.tutorProfile = tutor;
+      console.log(this.tutorProfile);
+    });
+  }
+
+  colorEnabled(isActive: boolean | undefined) {
+    if (isActive == undefined) {
+      return ' text-black hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm';
+    }
+    if (isActive) {
+      return 'bg-info text-black hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm';
+    } else {
+      return 'bg-error text-black hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm';
+    }
   }
 }
