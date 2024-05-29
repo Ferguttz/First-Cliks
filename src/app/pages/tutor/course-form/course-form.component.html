@@ -1,6 +1,4 @@
 <div>
-
-
   <!-- Comentado -->
 
   <!-- <form #form="ngForm" (ngSubmit)="create(form)">
@@ -107,22 +105,19 @@
             <div class="star"></div>
             <div class="star"></div>
           </div>
-          <div class="max-w-[570px] mt-12 ml-2">
-       
+          <div class="max-w-[570px] mt-10 ml-10">
             <h2
               class="mt-8 text-dark mb-6 font-bold text-[32px] sm:text-text-2xl lg:text-text-4xl xl:text-4xl"
             >
               Crea un <span class="gradient-text">curso</span>
-          
             </h2>
             <p class="text-base text-body-color leading-relaxed mb-9">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eius tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              adiqua minim veniam quis nostrud exercitation ullamco
+              En FirstClicks, creemos en el poder del aprendizaje compartido. Si
+              tienes habilidades y conocimientos que deseas transmitir, estás en
+              el lugar correcto. Crear un curso es una excelente manera de
+              conectar con estudiantes apasionados, construir tu reputación y, por supuesto, ¡ayudar a otros a aprender algo nuevo!
             </p>
-        
           </div>
-          
         </div>
         <div class="w-full lg:w-1/2 xl:w-5/12 lg:pr-10">
           <div class="bg-white relative rounded-lg p-8 sm:p-12 shadow-xl">
@@ -152,9 +147,7 @@
                     name="name"
                     formControlName="name"
                   />
-                    <div>
-        </div>
-
+                  <div></div>
                 </label>
                 <label class="form-control w-full max-w-xs">
                   <div class="label">
@@ -171,7 +164,7 @@
                     <option>Advance</option>
                   </select>
                 </label>
-            
+
                 <div class="flex flex-row items-center">
                   <label class="form-control w-full max-w-xs">
                     <div class="label">
@@ -193,41 +186,44 @@
                     Añadir
                   </button>
                   @for (item of techs; track $index) {
-                    <span id="badge-dismiss-orange" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium text-orange-800 bg-orange-300 rounded dark:bg-orange-900 dark:text-white">
-                      <input
-                        type="text"
-                        placeholder="{{ item }}"
-                        class="w-full max-w-52 bg-orange-300 text-white rounded dark:bg-orange-900 dark:text-orange-300"
-                        #tech
-                        disabled
-                      />
-                      <button
-                        type="button"
-                        class="inline-flex items-center p-1 ms-2 text-sm text-orange-400 bg-transparent rounded-sm hover:bg-orange-300 hover:text-orange-900 dark:hover:bg-orange-800 dark:hover:text-orange-300"
-                        (click)="deleteTechStack(tech.placeholder)"
-                        aria-label="Remove"
+                  <span
+                    id="badge-dismiss-orange"
+                    class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium text-orange-800 bg-orange-300 rounded dark:bg-orange-900 dark:text-white"
+                  >
+                    <input
+                      type="text"
+                      placeholder="{{ item }}"
+                      class="w-full max-w-52 bg-orange-300 text-white rounded dark:bg-orange-900 dark:text-orange-300"
+                      #tech
+                      disabled
+                    />
+                    <button
+                      type="button"
+                      class="inline-flex items-center p-1 ms-2 text-sm text-orange-400 bg-transparent rounded-sm hover:bg-orange-300 hover:text-orange-900 dark:hover:bg-orange-800 dark:hover:text-orange-300"
+                      (click)="deleteTechStack(tech.placeholder)"
+                      aria-label="Remove"
+                    >
+                      <svg
+                        class="w-2 h-2"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 14 14"
                       >
-                        <svg
-                          class="w-2 h-2"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 14 14"
-                        >
-                          <path
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                          />
-                        </svg>
-                        <span class="sr-only">Remove badge</span>
-                      </button>
-                    </span>
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                        />
+                      </svg>
+                      <span class="sr-only">Remove badge</span>
+                    </button>
+                  </span>
                   }
                 </div>
-                
+
                 <label class="form-control w-full">
                   <div class="label">
                     <span class="label-text">Descripción del curso</span>
@@ -247,9 +243,10 @@
                     (change)="uploadFile($event, 'coverPath')"
                   />
                 </label>
-                
-            
-                <button class="w-full mt-2 text-white createbtn rounded p-3 transition hover:bg-opacity-90">
+
+                <button
+                  class="w-full mt-2 text-white createbtn rounded p-3 transition hover:bg-opacity-90"
+                >
                   @if (courseExists) {
                   {{ "Actualizar" }}
                   } @else {
@@ -258,15 +255,13 @@
                 </button>
               </form>
               @if (courseExists) {
-              <button (click)="deleteCourse()" class="btn btn-outline">Eliminar</button>
+              <button (click)="deleteCourse()" class="btn btn-outline">
+                Eliminar
+              </button>
               } }
-              <div>
-              
-              </div>
-            
+              <div></div>
             </form>
-            <div>    
-            </div>
+            <div></div>
           </div>
         </div>
       </div>
