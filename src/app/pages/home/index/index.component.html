@@ -67,10 +67,7 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
       >
         <div
           class="w-full lg:w-1/2 flex flex-col items-center signup justify-center p-12 bg-no-repeat bg-cover bg-center"
-          style="
-            background-image: url('assets/logo.png');
-            background-size: 50%;
-          "
+          style="background-image: url('assets/logo.png'); background-size: 50%"
         ></div>
         <div class="w-full lg:w-1/2 py-16 px-12 bg-white">
           <h2 class="text-3xl mb-4">Iniciar Sesión</h2>
@@ -140,7 +137,7 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
 
             <div class="mt-5">
               <button
-                class="w-full py-3 text-center  font-bold signup text-white"
+                class="w-full py-3 text-center font-bold signup text-white"
               >
                 Enviar
               </button>
@@ -155,16 +152,15 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
 
 <!-- Sección que contiene sección de profesores mejor valorados, about us y get to know the team-->
 
-<section class=" px-4 sm:px-6 lg:px-36">
+<section class="px-4 sm:px-6 lg:px-36">
   <section class="bg-white mx-4 sm:mx-10 lg:mx-20">
     <div class="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
-      
       <!-- Cursos mejor valorados -->
       <!-- Presentación -->
       <div class="md:flex md:items-end md:justify-between">
         <div class="max-w-xl">
           <h2
-            class="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            class="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl"
           >
             Cursos mejor valorados
           </h2>
@@ -175,14 +171,14 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
             introducciones a la programación hasta cursos avanzados de
             desarrollo web y aplicaciones móviles, ofrecemos una amplia gama de
             opciones para que los jóvenes aprendan y desarrollen sus habilidades
-            en programación. 
+            en programación.
           </p>
         </div>
 
         <a
           routerLink="{{ courses }}"
           href="#"
-          class="mt-6 inline-flex shrink-0 items-center gap-2 rounded-full border border-primary px-5 py-3 text-primary transition hover:bg-primary hover:text-white md:mt-0"
+          class="mt-6 signupborder inline-flex shrink-0 items-center gap-2 rounded-full border  px-5 py-3 transition hover:bg-primary hover:text-white md:mt-0"
         >
           <span class="font-medium"> Explorar </span>
 
@@ -202,47 +198,71 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
           </svg>
         </a>
       </div>
-<!-- 3 mejores cursos -->
-<div class="grid gap-3 mt-8 mx-auto md:grid-cols-2 xl:grid-cols-3 group">
-  <!-- Primer mejor valorado -->
-  <div class="bg-black transition-all duration-300 group-hover:blur-sm hover:!blur-none group-hover:scale-90 hover:!scale-100 text-center p-8 rounded-xl cursor-pointer">
-    <img class="rounded-full mx-auto my-3" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="150px" />
-    <h4 class="uppercase text-xl font-bold">Jose García</h4>
-    <p class="text-sm leading-7 my-3 font-light opacity-70">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore fugiat reiciendis eligendi provident quis.
-    </p>
-    <button class="bg-primary py-2.5 px-8 rounded-full hover:bg-violet-600 text-white">
-      Contactar
-    </button>
-  </div>
-  <!-- Segundo mejor valorado -->
-  <div class="bg-black transition-all duration-300 group-hover:blur-sm hover:!blur-none group-hover:scale-90 hover:!scale-100 text-center p-8 rounded-xl cursor-pointer">
-    <img class="rounded-full mx-auto my-3" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="150px" />
-    <h4 class="uppercase text-xl font-bold">Jose García</h4>
-    <p class="text-sm leading-7 my-3 font-light opacity-70">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore fugiat reiciendis eligendi provident quis.
-    </p>
-    <button class="bg-primary py-2.5 px-8 rounded-full hover:bg-violet-600 text-white">
-      Contactar
-    </button>
-  </div>
-  <!-- Tercer mejor valorado -->
-  <div class="bg-black transition-all duration-300 group-hover:blur-sm hover:!blur-none group-hover:scale-90 hover:!scale-100 text-center p-8 rounded-xl cursor-pointer">
-    <img class="rounded-full mx-auto my-3" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="150px" />
-    <h4 class="uppercase text-xl font-bold">Jose García</h4>
-    <p class="text-sm leading-7 my-3 font-light opacity-70">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore fugiat reiciendis eligendi provident quis.
-    </p>
-    <button class="bg-primary py-2.5 px-8 rounded-full hover:bg-violet-600 text-white">
-      Contactar
-    </button>
-  </div>
-</div>
+      <!-- 3 mejores cursos -->
+      <div class="grid gap-3 mt-8 mx-auto md:grid-cols-2 xl:grid-cols-3 group">
+        <!-- Primer mejor valorado -->
+        <div
+          class="bg-slate-100 transition-all duration-300 group-hover:blur-sm hover:!blur-none group-hover:scale-90 hover:!scale-100 text-center p-8 rounded-xl cursor-pointer"
+        >
+          <img
+            class="rounded-md mx-auto my-3"
+            src="assets/js.png"
+            width="150px"
+          />
+          <h4 class="uppercase text-xl font-bold">Jose García</h4>
+          <p class="text-sm leading-7 my-3 font-light opacity-70">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+            fugiat reiciendis eligendi provident quis.
+          </p>
+          <button
+            class="signup py-2.5 px-8 rounded-full hover:bg-violet-600 text-white font-bold"
+          >
+            Contactar
+          </button>
+        </div>
+        <!-- Segundo mejor valorado -->
+        <div
+          class="bg-slate-100  transition-all duration-300 group-hover:blur-sm hover:!blur-none group-hover:scale-90 hover:!scale-100 text-center p-8 rounded-xl cursor-pointer"
+        >
+          <img
+            class="rounded-md mx-auto my-3"
+            src="assets/angularlogo.png"
+            width="150px"
+          />
+          <h4 class="uppercase text-xl font-bold">Jose García</h4>
+          <p class="text-sm leading-7 my-3 font-light opacity-70">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+            fugiat reiciendis eligendi provident quis.
+          </p>
+          <button
+            class="signup py-2.5 px-8 rounded-full font-bold hover:bg-violet-400 text-white"
+          >
+            Contactar
+          </button>
+        </div>
+        <!-- Tercer mejor valorado -->
+        <div
+          class="bg-slate-100  transition-all duration-300 group-hover:blur-sm hover:!blur-none group-hover:scale-90 hover:!scale-100 text-center p-8 rounded-xl cursor-pointer"
+        >
+          <img
+            class="rounded-md mx-auto my-3"
+            src="assets/springboot.png"
+            width="150px"
+          />
+          <h4 class="uppercase text-xl font-bold">Jose García</h4>
+          <p class="text-sm leading-7 my-3 font-light opacity-70">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+            fugiat reiciendis eligendi provident quis.
+          </p>
+          <button
+            class=" signup py-2.5 font-bold px-8 rounded-full hover:bg-violet-600 text-white"
+          >
+            Contactar
+          </button>
+        </div>
+      </div>
 
-
-
-   
-<!-- Sobre nosotros -->
+      <!-- Sobre nosotros -->
       <section class="bg-white">
         <div
           class="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16"
@@ -286,7 +306,7 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
           </div>
         </div>
       </section>
- <!-- Miembros del equipo -->
+      <!-- Miembros del equipo -->
       <section class="bg-white">
         <div class="mx-auto max-w-screen-2xl">
           <div class="md:flex md:items-end md:justify-center">
@@ -295,7 +315,6 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
               href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css"
             />
 
-           
             <div class="flex items-center justify-center min-h-screen bg-white">
               <div class="flex flex-col">
                 <!-- Notes -->
@@ -512,11 +531,10 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
-<!-- Contáctanos -->
+      <!-- Contáctanos -->
       <section class="bg-white dark:bg-gray-900">
         <div class="container px-6 mx-auto">
           <div class="text-center">
@@ -642,7 +660,6 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
           </div>
         </div>
       </section>
-
     </div>
   </section>
 </section>
