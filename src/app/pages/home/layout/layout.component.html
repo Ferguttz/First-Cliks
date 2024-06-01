@@ -33,15 +33,27 @@
       <li><a routerLink="{{ courses }}">Busca a tu profesor</a></li>
       @if (user?.role == "TUTOR") {
       <li><a routerLink="/tutor/profile">Mi perfil (profesor)</a></li>
+      <li><a routerLink="/tutor/chats">Mis chats</a></li>
+
       <!---->
       } @if (user?.role == "STUDENT") {
       <li><a>Mi perfil (alumno)</a></li>
+      <li><a routerLink="{{ chats }}">Mis chats</a></li>
+
       }
+
+
     </ul>
   </div>
   @if (user) {
   <div id="nav-button" class="navbar-end pr-12">
-    <a class="btn">{{ user.userName }}</a>
+    <a class="btn">{{ user.userName }}   
+      @if (user?.role == "TUTOR") {
+        <img alt="Tailwind CSS Navbar component" class="w-8 rounded-full" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+      }
+      
+    </a>
+   
   </div>
   <div id="nav-button" class="navbar-end pr-36">
     <a (click)="logout()" class="btn signup border-none text-white rounded-full">Cerrar sesión</a>
