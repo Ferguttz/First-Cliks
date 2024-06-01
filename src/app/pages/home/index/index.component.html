@@ -3,6 +3,7 @@
 https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80
   This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
 -->
+<!-- Portada -->
 <section id="background" class="relative bg-cover bg-center bg-no-repeat">
   <div
     class="absolute inset-0 bg-white/75 sm:bg-transparent sm:from-white/95 sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"
@@ -54,9 +55,9 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
     </div>
   </div>
 </section>
+<!-- Fin de portada -->
 
 <!-- Prueba de model para que se deslize el login-->
-
 <div id="modal1" class="modalmask" [hidden]="isClosed">
   <div class="modalbox movedown">
     <a href="#close" title="Close" class="close">X</a>
@@ -150,12 +151,16 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
     </div>
   </div>
 </div>
+<!-- Fin del modal de login -->
 
 <!-- Sección que contiene sección de profesores mejor valorados, about us y get to know the team-->
 
-<section class="container mx-auto px-36">
-  <section class="bg-white lg:mx-20">
+<section class=" px-4 sm:px-6 lg:px-36">
+  <section class="bg-white mx-4 sm:mx-10 lg:mx-20">
     <div class="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+      
+      <!-- Cursos mejor valorados -->
+      <!-- Presentación -->
       <div class="md:flex md:items-end md:justify-between">
         <div class="max-w-xl">
           <h2
@@ -197,72 +202,47 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
           </svg>
         </a>
       </div>
+<!-- 3 mejores cursos -->
+<div class="grid gap-3 mt-8 mx-auto md:grid-cols-2 xl:grid-cols-3 group">
+  <!-- Primer mejor valorado -->
+  <div class="bg-black transition-all duration-300 group-hover:blur-sm hover:!blur-none group-hover:scale-90 hover:!scale-100 text-center p-8 rounded-xl cursor-pointer">
+    <img class="rounded-full mx-auto my-3" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="150px" />
+    <h4 class="uppercase text-xl font-bold">Jose García</h4>
+    <p class="text-sm leading-7 my-3 font-light opacity-70">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore fugiat reiciendis eligendi provident quis.
+    </p>
+    <button class="bg-primary py-2.5 px-8 rounded-full hover:bg-violet-600 text-white">
+      Contactar
+    </button>
+  </div>
+  <!-- Segundo mejor valorado -->
+  <div class="bg-black transition-all duration-300 group-hover:blur-sm hover:!blur-none group-hover:scale-90 hover:!scale-100 text-center p-8 rounded-xl cursor-pointer">
+    <img class="rounded-full mx-auto my-3" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="150px" />
+    <h4 class="uppercase text-xl font-bold">Jose García</h4>
+    <p class="text-sm leading-7 my-3 font-light opacity-70">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore fugiat reiciendis eligendi provident quis.
+    </p>
+    <button class="bg-primary py-2.5 px-8 rounded-full hover:bg-violet-600 text-white">
+      Contactar
+    </button>
+  </div>
+  <!-- Tercer mejor valorado -->
+  <div class="bg-black transition-all duration-300 group-hover:blur-sm hover:!blur-none group-hover:scale-90 hover:!scale-100 text-center p-8 rounded-xl cursor-pointer">
+    <img class="rounded-full mx-auto my-3" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="150px" />
+    <h4 class="uppercase text-xl font-bold">Jose García</h4>
+    <p class="text-sm leading-7 my-3 font-light opacity-70">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore fugiat reiciendis eligendi provident quis.
+    </p>
+    <button class="bg-primary py-2.5 px-8 rounded-full hover:bg-violet-600 text-white">
+      Contactar
+    </button>
+  </div>
+</div>
 
-      <div>
-        <div class="md:flex grid mx-auto gap-3 mt-8 group">
-          <!-- Primer mejor valorado -->
-          <div
-            class="bg-black group-hover:blur-sm hover:!blur-none group-hover:scale-[0.85] hover:!scale-100 text-center p-8 rounded-xl cursor-pointer"
-          >
-            <img
-              class="rounded-full mx-auto my-3"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              width="150px"
-            />
-            <h4 class="uppercase text-xl font-bold">Jose García</h4>
-            <p class="text-sm leading-7 my-3 font-light opacity-70">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-              fugiat reiciendis eligendi provident quis.
-            </p>
-            <button
-              class="bg-primary py-2.5 px-8 rounded-full hover:bg-violet-600 text-white"
-            >
-              Contactar
-            </button>
-          </div>
-          <!-- Segundo mejor valorado -->
-          <div
-            class="bg-black group-hover:blur-sm hover:!blur-none group-hover:scale-[0.85] hover:!scale-100 text-center p-8 rounded-xl cursor-pointer"
-          >
-            <img
-              class="rounded-full mx-auto my-3"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              width="150px"
-            />
-            <h4 class="uppercase text-xl font-bold">Jose García</h4>
-            <p class="text-sm leading-7 my-3 font-light opacity-70">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-              fugiat reiciendis eligendi provident quis.
-            </p>
-            <button
-              class="bg-primary py-2.5 px-8 rounded-full hover:bg-violet-600 text-white"
-            >
-              Contactar
-            </button>
-          </div>
-          <!-- Tercer mejor valorado -->
-          <div
-            class="bg-black group-hover:blur-sm hover:!blur-none group-hover:scale-[0.85] hover:!scale-100 text-center p-8 rounded-xl cursor-pointer"
-          >
-            <img
-              class="rounded-full mx-auto my-3"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              width="150px"
-            />
-            <h4 class="uppercase text-xl font-bold">Jose García</h4>
-            <p class="text-sm leading-7 my-3 font-light opacity-70">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-              fugiat reiciendis eligendi provident quis.
-            </p>
-            <button
-              class="bg-primary py-2.5 px-8 rounded-full hover:bg-violet-600 text-white"
-            >
-              Contactar
-            </button>
-          </div>
-        </div>
-      </div>
 
+
+   
+<!-- Sobre nosotros -->
       <section class="bg-white">
         <div
           class="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16"
@@ -306,6 +286,7 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
           </div>
         </div>
       </section>
+ <!-- Miembros del equipo -->
       <section class="bg-white">
         <div class="mx-auto max-w-screen-2xl">
           <div class="md:flex md:items-end md:justify-center">
@@ -314,7 +295,7 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
               href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css"
             />
 
-            <!-- Page Container -->
+           
             <div class="flex items-center justify-center min-h-screen bg-white">
               <div class="flex flex-col">
                 <!-- Notes -->
@@ -531,110 +512,11 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
-
-      <!-- <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
-      <blockquote
-        class="flex h-full flex-col justify-between card bg-base-100 shadow-xl"
-      >
-        <figure>
-          <img
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Shoes"
-            height="928px"
-            width="548px"
-          />
-        </figure>
-        <div class="p-6">
-          <div class="mt-4">
-            <p class="text-2xl font-bold text-primary sm:text-3xl">
-              Michael Scott
-            </p>
-
-            <p class="mt-4 leading-relaxed text-gray-700">
-              Desarrollador Fullstack Lemoncoder, Front End (React), Backend
-              (nodejs), Devops (Github Actions, Docker) y testing. Amante de las
-              nuevas tecnologías y siempre en estado de renovación continua.
-            </p>
-          </div>
-        </div>
-
-        <footer class="mt-4 text-sm font-medium text-gray-700 sm:mt-6 p-6">
-          <div class="card-actions justify-end">
-            <div class="badge badge-outline">Fashion</div>
-            <div class="badge badge-outline">Products</div>
-          </div>
-        </footer>
-      </blockquote>
-      <blockquote
-        class="flex h-full flex-col justify-between card bg-base-100 shadow-xl"
-      >
-        <figure>
-          <img
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Shoes"
-            height="928px"
-            width="548px"
-          />
-        </figure>
-        <div class="p-6">
-          <div class="mt-4">
-            <p class="text-2xl font-bold text-primary sm:text-3xl">
-              Michael Scott
-            </p>
-
-            <p class="mt-4 leading-relaxed text-gray-700">
-              Desarrollador Fullstack Lemoncoder, Front End (React), Backend
-              (nodejs), Devops (Github Actions, Docker) y testing. Amante de las
-              nuevas tecnologías y siempre en estado de renovación continua.
-            </p>
-          </div>
-        </div>
-
-        <footer class="mt-4 text-sm font-medium text-gray-700 sm:mt-6 p-6">
-          <div class="card-actions justify-end">
-            <div class="badge badge-outline">NodeJs</div>
-            <div class="badge badge-outline">Angular</div>
-          </div>
-        </footer>
-      </blockquote>
-      <blockquote
-        class="flex h-full flex-col justify-between card bg-base-100 shadow-xl"
-      >
-        <figure>
-          <img
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Shoes"
-            height="928px"
-            width="548px"
-          />
-        </figure>
-        <div class="p-6">
-          <div class="mt-4">
-            <p class="text-2xl font-bold text-primary sm:text-3xl">
-              Michael Scott
-            </p>
-
-            <p class="mt-4 leading-relaxed text-gray-700">
-              Desarrollador Fullstack Lemoncoder, Front End (React), Backend
-              (nodejs), Devops (Github Actions, Docker) y testing. Amante de las
-              nuevas tecnologías y siempre en estado de renovación continua.
-            </p>
-          </div>
-        </div>
-
-        <footer class="mt-4 text-sm font-medium text-gray-700 sm:mt-6 p-6">
-          <div class="card-actions justify-end">
-            <div class="badge badge-outline">Fashion</div>
-            <div class="badge badge-outline">Products</div>
-          </div>
-        </footer>
-      </blockquote>
-    </div>
-  </div>
-</section> -->
+<!-- Contáctanos -->
       <section class="bg-white dark:bg-gray-900">
         <div class="container px-6 mx-auto">
           <div class="text-center">
@@ -760,6 +642,7 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
           </div>
         </div>
       </section>
+
     </div>
   </section>
 </section>
