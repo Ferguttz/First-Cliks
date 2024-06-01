@@ -3,11 +3,12 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { AuthenticationRequestDto } from '../../../../services/models';
 import { FormsModule, NgForm } from '@angular/forms';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-index',
   standalone: true,
-  imports: [RouterModule, FormsModule],
+  imports: [RouterModule, FormsModule, FooterComponent],
   templateUrl: './index.component.html',
   styleUrl: './index.component.css',
 })
