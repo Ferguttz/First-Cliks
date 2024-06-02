@@ -7,6 +7,142 @@
   </div>
   }
 </div>
+<!-- SUTDENT ENROLLMENT BUTTON -->
+@if (user?.role == "STUDENT") {
+<button class="btn">
+  Apuntarse
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-6 w-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+    />
+  </svg>
+</button>
+} @else if (user?.role != "TUTOR") {
+<a [href]="['courses/' + course.id + '#modal2']">
+  <button class="btn">
+    Apuntarse
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+      />
+    </svg>
+  </button>
+</a>
+
+}
+<!-- MODAL LOGIN -->
+<div id="modal2" class="modalmask" [hidden]="isClosed">
+  <div class="modalbox movedown">
+    <a [href]="['courses/' + course.id + '#close']" title="Close" class="close"
+      >X</a
+    >
+    <div class="text-black login">
+      <div
+        class="flex flex-col lg:flex-row lg:w-6/12 rounded-xl mx-auto shadow-lg overflow-hidden"
+      >
+        <div
+          class="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          "
+        ></div>
+        <div class="w-full lg:w-1/2 py-16 px-12 bg-white">
+          <h2 class="text-3xl mb-4">Iniciar Sesión</h2>
+          <p class="mb-4">Inicia sesión para acceder a tu cuenta.</p>
+          <form #form="ngForm" (ngSubmit)="login(form)">
+            @if (errors.length) {
+            <div class="text-error">
+              <ul>
+                @for (error of errors; track error) {
+                <li>{{ error }}</li>
+                }
+              </ul>
+            </div>
+            }
+            <div
+              class="text-error"
+              [hidden]="userName.valid || userName.pristine"
+            >
+              @if( userName.errors?.['required'] ) { El Usuraio obligatorio }
+              @else if (userName.errors?.['email']) { Ingrese un Usuario válido
+              }
+            </div>
+            <div class="mt-5">
+              Usuario
+              <input
+                type="text"
+                placeholder="Email"
+                class="border border-gray-400 py-1 px-2 w-full"
+                [(ngModel)]="authRequest.userName"
+                #userName="ngModel"
+                required=""
+                name="userName"
+              />
+            </div>
+            <div
+              class="text-error"
+              [hidden]="password.valid || password.pristine"
+            >
+              @if(password.errors?.['required']) { La contraseña es obligatoria
+              }
+            </div>
+            <div class="mt-5">
+              Contraseña
+              <input
+                type="password"
+                placeholder="Contraseña"
+                class="border border-gray-400 py-1 px-2 w-full"
+                [(ngModel)]="authRequest.password"
+                required=""
+                #password="ngModel"
+                name="password"
+              />
+            </div>
+
+            <div class="mt-5 text-black">
+              <span>
+                Aún no tiene cuenta.
+                <a
+                  [routerLink]="['/auth/signup']"
+                  routerLinkActive="router-link-active"
+                  class="font-semibold check-terms"
+                >
+                  Regístrese aquí.</a
+                >
+              </span>
+            </div>
+
+            <div class="mt-5">
+              <button
+                class="w-full py-3 text-center gradient-text font-bold bg-black text-white"
+              >
+                Enviar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- TUTOR -->
 <div class="relative">
   <div

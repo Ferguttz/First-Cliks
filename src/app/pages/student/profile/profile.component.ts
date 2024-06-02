@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CarouselModule } from 'primeng/carousel';
 import { ProfileService } from '../../../services/profile.service';
-import { TutorPrivateProfileDto } from '../../../../services/models';
+import { StudentPrivateProfileDto } from '../../../../services/models';
+import { CarouselModule } from 'primeng/carousel';
 import { CommonModule } from '@angular/common';
 import { ApiImgPipe } from '../../../shared/api-img.pipe';
 import { RouterModule } from '@angular/router';
@@ -20,13 +20,13 @@ interface Course {
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
-export default class ProfileComponent {
-  private tutorProfileService = inject(ProfileService);
-  tutorProfile: TutorPrivateProfileDto = {};
+export default class ProfileComponent implements OnInit {
+  private studentProfileService = inject(ProfileService);
+  studentProfile: StudentPrivateProfileDto = {};
   courses: Course[] = [];
   responsiveOptions: any[] = [];
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.courses = [
       {
         id: '1',
@@ -73,9 +73,9 @@ export default class ProfileComponent {
       },
     ];
 
-    this.tutorProfileService.getProfileTutor().subscribe((tutor) => {
-      this.tutorProfile = tutor;
-      console.log(this.tutorProfile);
+    this.studentProfileService.getProfileStudent().subscribe((student) => {
+      this.studentProfile = student;
+      console.log(this.studentProfile);
     });
   }
 

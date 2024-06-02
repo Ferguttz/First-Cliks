@@ -110,6 +110,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/student/course-enrolled/course-enrolled.component'),
       },
+      {
+        path: 'profile',
+        title: 'perfil',
+        loadComponent: () =>
+          import('./pages/student/profile/profile.component'),
+      },
     ],
   },
 ];

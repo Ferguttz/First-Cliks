@@ -25,7 +25,9 @@
     <a
       href="./"
       class="btn bg-white border-white hover:bg-white hover:border-white shadow-none rounded-xl text-xl text-black gap-0"
-      > <p class="mr-2">FirstClicks</p>   <img src="assets/logo.png" alt="" width="35x">
+    >
+      <p class="mr-2">FirstClicks</p>
+      <img src="assets/logo.png" alt="" width="35x" />
     </a>
   </div>
   <div class="navbar-center hidden lg:flex text-black">
@@ -35,7 +37,7 @@
       <li><a routerLink="/tutor/profile">Mi perfil (profesor)</a></li>
       <!---->
       } @if (user?.role == "STUDENT") {
-      <li><a>Mi perfil (alumno)</a></li>
+      <li><a routerLink="/student/profile">Mi perfil (alumno)</a></li>
       }
     </ul>
   </div>
@@ -44,7 +46,9 @@
     <a class="btn">{{ user.userName }}</a>
   </div>
   <div id="nav-button" class="navbar-end pr-36">
-    <a (click)="logout()" class="btn signup border-none text-white rounded-full">Cerrar sesión</a>
+    <a (click)="logout()" class="btn signup border-none text-white rounded-full"
+      >Cerrar sesión</a
+    >
   </div>
   } @else {
   <div id="nav-button" class="navbar-end pr-36 text-black">
