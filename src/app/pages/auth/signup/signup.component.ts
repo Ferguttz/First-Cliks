@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthenticationService } from '../../../../services/services';
@@ -32,6 +32,11 @@ export default class SignupComponent {
   });
 
   errors: string[] = [];
+
+  // Hacer focus al siguiente elemento
+  nextInput(input: ElementRef) {
+    input.nativeElement.focus();
+  }
 
   signup() {
     console.log(this.form);

@@ -90,6 +90,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/tutor/course-form/course-form.component'),
       },
+      {
+        path: 'chats',
+        title: 'Mis chats',
+        loadComponent: () => import('./pages/home/chats/chats.component'),
+      },
     ],
   },
   {
