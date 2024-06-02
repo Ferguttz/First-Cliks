@@ -1,4 +1,47 @@
-<p>course-enrolled works!</p>
+<app-course-card [course]="courseEnrolled" [linkPath]="''"></app-course-card>
+<form
+  action="POST"
+  [formGroup]="form"
+  (ngSubmit)="save()"
+  class="flex flex-col max-w-64 gap-2"
+>
+  <p-rating
+    [stars]="5"
+    [cancel]="false"
+    formControlName="studentStars"
+  ></p-rating>
+  <textarea
+    class="textarea textarea-bordered"
+    placeholder="Bio"
+    formControlName="studentReview"
+  ></textarea>
+  <button class="btn btn-active btn-primary">Enviar</button>
+</form>
+
+<div class="relative">
+  <div class="bg-white shadow-md rounded-xl">
+    <a class="flex flex-auto">
+      <div>
+        <img
+          [src]="courseEnrolled.tutor?.photoRoute || '' | apiImg"
+          alt="Teacher"
+          class="h-36 m-4 object-cover rounded-full"
+        />
+      </div>
+      <div class="flex flex-auto flex-col justify-between">
+        <div class="m-4">
+          <span class="text-gray-400 mr-3 uppercase text-xs">TUTOR</span>
+          <p class="text-lg font-bold text-black truncate block capitalize">
+            {{ courseEnrolled.tutor?.firstName }}
+          </p>
+          <p class="text-sm text-black">
+            {{ courseEnrolled.tutor?.description }}
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
 <div class="btm-nav">
   <button routerLink="/student/courses">
     <svg

@@ -1,6 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
-import { CourseControllerService } from '../../../../services/services';
+import {
+  CourseControllerService,
+  StudentCourseAdminService,
+} from '../../../../services/services';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {
   AuthenticationRequestDto,
@@ -15,6 +18,7 @@ import { ApiImgPipe } from '../../../shared/api-img.pipe';
 import { CourseCardComponent } from '../shared/course-card/course-card.component';
 import { AuthService } from '../../../services/auth.service';
 import { FormsModule, NgForm } from '@angular/forms';
+import { StudentService } from '../../../services/student.service';
 
 @Component({
   selector: 'app-course',
@@ -34,8 +38,12 @@ export default class CourseComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private authService = inject(AuthService);
   private router = inject(Router);
+  private studenProfile = inject(StudentService);
+  private studentCourseAdmin = inject(StudentCourseAdminService);
+
   isClosed = false;
   errors: string[] = [];
+  enrolled: number[] = [];
 
   authRequest: AuthenticationRequestDto = {
     userName: '',
@@ -90,5 +98,32 @@ export default class CourseComponent implements OnInit {
     });
   }
 
-  studentEnroll() {}
+  showSuccess = false;
+  showError = false;
+
+  studentEnroll(courseId: number) {
+    // this.studenProfile.getIdsCourse().subscribe((ids: number[]) => {
+    //   if (ids.indexOf(courseId) != -1) {
+    //     this.studentCourseAdmin.enroll({ courseId: courseId });
+    //     this.showSuccess = true;
+    //   } else {
+    //     this.showError = true;
+    //   }
+    // });
+    this.studentCourseAdmin.enroll({ courseId: courseId }).subscribe({
+      next: () => {
+        this.showSuccess = true;
+      },
+      error: () => {
+        this.showError = true;
+      },
+    });
+  }
+
+  closeAlert() {
+    this.showError = false;
+    this.showSuccess = false;
+  }
+
+  goToCourse() {}
 }

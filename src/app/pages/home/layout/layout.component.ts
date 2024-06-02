@@ -16,7 +16,6 @@ export default class LayoutComponent {
   signup = './auth/signup';
   chats = './chats';
 
-
   private authService = inject(AuthService);
   private router = inject(Router);
 

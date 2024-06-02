@@ -25,6 +25,27 @@
   position: relative; /* position must be set for z-index to work */
 }
 
+/* Agregado del index modal login */
+.element-to-move-front {
+  z-index: 1; /* set higher z-index value */
+  position: relative; /* position must be set for z-index to work */
+}
+
+.another-element-behind {
+  z-index: 0; /* set lower z-index value */
+  position: relative; /* position must be set for z-index to work */
+}
+.signup {
+  background-color: #6569e2;
+}
+.signupborder {
+  border-color: #6569e2;
+  color: #6569e2;
+}
+.mail {
+  color: #6569e2;
+}
+
 /*Efecto*/
 .modalmask {
   position: fixed;

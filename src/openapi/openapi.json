@@ -76,6 +76,28 @@
       }
     },
     "/student/courses/{studentCourseId}": {
+      "get": {
+        "tags": ["student-course-admin"],
+        "operationId": "getStudentCourseById",
+        "parameters": [
+          {
+            "name": "studentCourseId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int32" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/StudentCourseDTO" }
+              }
+            }
+          }
+        }
+      },
       "put": {
         "tags": ["student-course-admin"],
         "operationId": "review",
@@ -309,6 +331,25 @@
         }
       }
     },
+    "/student/profile/idCourses": {
+      "get": {
+        "tags": ["student-controller-profile"],
+        "operationId": "IdsEnrolledCourses",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": { "type": "integer", "format": "int32" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/student/courses/list": {
       "get": {
         "tags": ["student-course-admin"],
@@ -322,6 +363,30 @@
                   "type": "array",
                   "items": { "$ref": "#/components/schemas/StudentCourseDTO" }
                 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile/{tutorId}": {
+      "get": {
+        "tags": ["public-controller-profile"],
+        "operationId": "getPublicTutorProfile",
+        "parameters": [
+          {
+            "name": "tutorId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int32" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/TutorProfilePublic" }
               }
             }
           }
@@ -498,6 +563,13 @@
         }
       }
     },
+    "/auth/logout": {
+      "get": {
+        "tags": ["Authentication"],
+        "operationId": "logout",
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
     "/auth/activate-account": {
       "get": {
         "tags": ["Authentication"],
@@ -620,8 +692,8 @@
             "items": { "$ref": "#/components/schemas/StudentCourse" }
           },
           "fullName": { "type": "string" },
-          "name": { "type": "string" },
           "enabled": { "type": "boolean" },
+          "name": { "type": "string" },
           "accountLocked": { "type": "boolean" },
           "authorities": {
             "type": "array",
@@ -671,8 +743,8 @@
           "description": { "type": "string" },
           "photoRoute": { "type": "string" },
           "fullName": { "type": "string" },
-          "name": { "type": "string" },
           "enabled": { "type": "boolean" },
+          "name": { "type": "string" },
           "accountLocked": { "type": "boolean" },
           "authorities": {
             "type": "array",
@@ -798,6 +870,9 @@
         "properties": {
           "totalElements": { "type": "integer", "format": "int64" },
           "totalPages": { "type": "integer", "format": "int32" },
+          "first": { "type": "boolean" },
+          "last": { "type": "boolean" },
+          "numberOfElements": { "type": "integer", "format": "int32" },
           "size": { "type": "integer", "format": "int32" },
           "content": {
             "type": "array",
@@ -805,9 +880,6 @@
           },
           "number": { "type": "integer", "format": "int32" },
           "sort": { "$ref": "#/components/schemas/SortObject" },
-          "first": { "type": "boolean" },
-          "last": { "type": "boolean" },
-          "numberOfElements": { "type": "integer", "format": "int32" },
           "pageable": { "$ref": "#/components/schemas/PageableObject" },
           "empty": { "type": "boolean" }
         }
@@ -817,8 +889,8 @@
         "properties": {
           "offset": { "type": "integer", "format": "int64" },
           "sort": { "$ref": "#/components/schemas/SortObject" },
-          "pageSize": { "type": "integer", "format": "int32" },
           "pageNumber": { "type": "integer", "format": "int32" },
+          "pageSize": { "type": "integer", "format": "int32" },
           "paged": { "type": "boolean" },
           "unpaged": { "type": "boolean" }
         }

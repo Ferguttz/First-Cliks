@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import {
   StudentPrivateProfileDto,
   TutorPrivateProfileDto,
+  TutorProfilePublic,
 } from '../../services/models';
 import { environment } from '../../environments/environment';
 
@@ -21,6 +22,12 @@ export class ProfileService {
   getProfileStudent() {
     return this.http.get<StudentPrivateProfileDto>(
       `${environment.apiBase}/student/profile`
+    );
+  }
+
+  getTutorPublicProfile(id: number) {
+    return this.http.get<TutorProfilePublic>(
+      `${environment.apiBase}/profile/${id}`
     );
   }
 }
