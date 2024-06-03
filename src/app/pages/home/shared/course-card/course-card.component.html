@@ -1,4 +1,9 @@
-<a [routerLink]="[linkPath, course.id]" class="flex flex-auto">
+<a
+  [routerLink]="[linkPath, course.id]"
+  class="flex flex-auto"
+  id="ref"
+  [class.disable]="disable ? true : null"
+>
   <div>
     <img
       [src]="course.coverPath || '' | apiImg"

@@ -110,10 +110,16 @@ export const routes: Routes = [
           import('./pages/student/course-list/course-list.component'),
       },
       {
-        path: 'adminEnroll',
+        path: 'adminEnroll/:id',
         title: 'admin',
         loadComponent: () =>
           import('./pages/student/course-enrolled/course-enrolled.component'),
+      },
+      {
+        path: 'profile',
+        title: 'perfil',
+        loadComponent: () =>
+          import('./pages/student/profile/profile.component'),
       },
     ],
   },

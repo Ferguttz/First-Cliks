@@ -21,30 +21,29 @@
         tabindex="0"
         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
       >
-    
+        <li class="font-bold">
+          <a routerLink="{{ courses }}">Busca a tu profesor</a>
+        </li>
+        @if (user?.role == "TUTOR") {
+        <li class="font-bold"><a routerLink="/tutor/chats">Mis chats</a></li>
+        <li><a routerLink="/tutor/profile">Mi perfil (profesor)</a></li>
 
-
-      <li class="font-bold"><a routerLink="{{ courses }}">Busca a tu profesor</a></li>
-      @if (user?.role == "TUTOR") {
-      <li class="font-bold"><a routerLink="/tutor/chats">Mis chats</a></li>
-      <li ><a routerLink="/tutor/profile">Mi perfil (profesor)</a></li>
-
-
-      <!---->
-      } @if (user?.role == "STUDENT") {
-      <li><a>Mi perfil (alumno)</a></li>
-      <li><a routerLink="{{ chats }}">Mis chats</a></li>
-      }
-      <li>
-      <a (click)="logout()" class="">Cerrar sesión</a></li>
-
-
-    </ul>
+        <!---->
+        } @if (user?.role == "STUDENT") {
+        <li><a>Mi perfil (alumno)</a></li>
+        <li><a routerLink="{{ chats }}">Mis chats</a></li>
+        }
+        <li>
+          <a (click)="logout()" class="">Cerrar sesión</a>
+        </li>
+      </ul>
     </div>
     <a
       href="./"
       class="btn bg-white border-white hover:bg-white hover:border-white shadow-none rounded-xl text-xl text-black gap-0"
-      > <p class="mr-2">FirstClicks</p>   <img src="assets/logo.png" alt="" width="35x">
+    >
+      <p class="mr-2">FirstClicks</p>
+      <img src="assets/logo.png" alt="" width="35x" />
     </a>
   </div>
   <div class="navbar-center hidden lg:flex text-black">
@@ -56,36 +55,31 @@
 
       <!---->
       } @if (user?.role == "STUDENT") {
-      <li><a>Mi perfil (alumno)</a></li>
+      <li><a routerLink="/student/profile">Mi perfil (alumno)</a></li>
       <li><a routerLink="{{ chats }}">Mis chats</a></li>
-
       }
-
-
     </ul>
   </div>
   @if (user) {
   <div id="nav-button" class="navbar-end pr-12">
-    <a class="btn">{{ user.userName }}   
-      @if (user?.role == "TUTOR") {
-        <img alt="Tailwind CSS Navbar component" class="w-8 rounded-full" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+    <a class="btn"
+      >{{ user.userName }}
+      @if (user.role == "TUTOR") {
+      <img
+        alt="Tailwind CSS Navbar component"
+        class="w-8 rounded-full"
+        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+      />
       }
-      
     </a>
-   
   </div>
-  
-  
 
-
-  
   <div id="nav-button" class="navbar-end pr-36">
-    <div class="hidden sm:block">
-      <a (click)="logout()" class="btn signup border-none text-white rounded-full">Cerrar sesión</a>
-    </div>
+    <a (click)="logout()" class="btn signup border-none text-white rounded-full"
+      >Cerrar sesión</a
+    >
   </div>
-  
-  
+
   } @else {
   <div id="nav-button" class="navbar-end pr-36 text-black">
     <a href="#modal1" class="">Inicia Sesión </a>
