@@ -15,11 +15,12 @@ import { Get$Params } from '../../../../services/fn/tutor-course-admin-controlle
 import { CourseService } from '../../../services/course.service';
 import { Observable, from } from 'rxjs';
 import { Delete$Params } from '../../../../services/fn/tutor-course-admin-controller/delete';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-course-form',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, ApiImgPipe],
+  imports: [RouterModule, ReactiveFormsModule, ApiImgPipe,CommonModule],
   templateUrl: './course-form.component.html',
   styleUrl: './course-form.component.css',
 })
@@ -47,6 +48,8 @@ export default class CourseFormComponent implements OnInit {
   };
 
   courseId = this.route.snapshot.paramMap.get('id');
+  imageUrl: string | ArrayBuffer | null = null;
+
   ngOnInit(): void {
     if (this.courseId) {
       this.courseService
@@ -81,6 +84,21 @@ export default class CourseFormComponent implements OnInit {
     }
   }
 
+  // uploadFile(event: any, control: string) {
+  //   const file = event.target.files[0];
+
+  //   if (file) {
+  //     const formData = new FormData();
+  //     formData.append('file', file);
+
+  //     this.mediaService.upload(formData).subscribe((response) => {
+  //       this.form!.controls[control].setValue(response.path);
+  //     });
+  //   }
+  // }
+
+ //Guarda la imagen y hace una vista previa
+ 
   uploadFile(event: any, control: string) {
     const file = event.target.files[0];
 
@@ -88,6 +106,14 @@ export default class CourseFormComponent implements OnInit {
       const formData = new FormData();
       formData.append('file', file);
 
+      // Mostrar la vista previa de la imagen
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageUrl = reader.result;
+      };
+      reader.readAsDataURL(file);
+
+      // Subir la imagen al servidor
       this.mediaService.upload(formData).subscribe((response) => {
         this.form!.controls[control].setValue(response.path);
       });
