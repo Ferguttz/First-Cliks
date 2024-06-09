@@ -16,6 +16,8 @@ export default class SignupComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private accountService = inject(AuthenticationService);
+  telfClosed = false;
+  errors: string[] = [];
 
   form = this.fb.group({
     userName: ['', [Validators.required]],
@@ -29,9 +31,8 @@ export default class SignupComponent {
     gender: ['', [Validators.required]],
     photoRoute: [''],
     description: [''],
+    phoneNumber: [null],
   });
-
-  errors: string[] = [];
 
   // Hacer focus al siguiente elemento
   nextInput(input: ElementRef) {
@@ -62,5 +63,20 @@ export default class SignupComponent {
         }
       },
     });
+  }
+
+  mostrarInputTel(cambiar: boolean) {
+    this.telfClosed = cambiar;
+
+    if (cambiar) {
+      this.form.controls['phoneNumber'].setValidators([
+        Validators.required,
+        Validators.pattern('[0-9]{9}'),
+      ]);
+    } else {
+      this.form.controls['phoneNumber'].clearValidators();
+    }
+    this.form.controls['phoneNumber'].updateValueAndValidity();
+    console.log(this.form);
   }
 }

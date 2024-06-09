@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-course-form',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, ApiImgPipe,CommonModule],
+  imports: [RouterModule, ReactiveFormsModule, ApiImgPipe, CommonModule],
   templateUrl: './course-form.component.html',
   styleUrl: './course-form.component.css',
 })
@@ -40,9 +40,9 @@ export default class CourseFormComponent implements OnInit {
   techs: Array<string> = new Array<string>();
 
   createCourse: CourseDto = {
-    coverPath: 'java.jpg',
+    coverPath: 'Default_Course.jpg',
     description: '',
-    level: 'ENTRY',
+    level: undefined,
     name: '',
     techStack: this.techs,
   };
@@ -97,8 +97,8 @@ export default class CourseFormComponent implements OnInit {
   //   }
   // }
 
- //Guarda la imagen y hace una vista previa
- 
+  //Guarda la imagen y hace una vista previa
+
   uploadFile(event: any, control: string) {
     const file = event.target.files[0];
 
@@ -121,11 +121,15 @@ export default class CourseFormComponent implements OnInit {
   }
 
   contador = 0;
-  addTechStack(techInput: string) {
+  maxTechStack = true;
+  addTechStack(techInput: HTMLInputElement) {
     console.log(techInput);
     if (this.contador < 3) {
-      this.techs.push(techInput);
+      this.techs.push(techInput.value);
+      techInput.value = '';
       this.contador++;
+    } else {
+      this.maxTechStack = false;
     }
   }
 
@@ -134,6 +138,7 @@ export default class CourseFormComponent implements OnInit {
     if (index > -1) {
       this.techs.splice(index, 1);
       this.contador--;
+      this.maxTechStack = true;
     }
   }
 
@@ -141,6 +146,14 @@ export default class CourseFormComponent implements OnInit {
     this.form?.get('techStack')?.setValue(this.techs);
     console.log(this.form);
     if (this.form!.invalid) {
+      if (this.form?.get('techStack')?.status == 'INVALID') {
+        this.errors.push('Debe de introducir al menos una tecnología');
+      }
+
+      if (this.form?.get('level')?.status == 'INVALID') {
+        this.errors.push('Debe seleccionar un Nivel');
+      }
+
       this.form!.markAllAsTouched();
       return;
     }

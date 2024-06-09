@@ -684,6 +684,7 @@
           "gender": { "type": "string" },
           "email": { "type": "string" },
           "address": { "type": "string" },
+          "phoneNumber": { "type": "integer", "format": "int32" },
           "description": { "type": "string" },
           "photoRoute": { "type": "string" },
           "enrollments": {
@@ -692,8 +693,8 @@
             "items": { "$ref": "#/components/schemas/StudentCourse" }
           },
           "fullName": { "type": "string" },
-          "enabled": { "type": "boolean" },
           "name": { "type": "string" },
+          "enabled": { "type": "boolean" },
           "accountLocked": { "type": "boolean" },
           "authorities": {
             "type": "array",
@@ -740,11 +741,12 @@
           "gender": { "type": "string" },
           "email": { "type": "string" },
           "address": { "type": "string" },
+          "phoneNumber": { "type": "integer", "format": "int32" },
           "description": { "type": "string" },
           "photoRoute": { "type": "string" },
           "fullName": { "type": "string" },
-          "enabled": { "type": "boolean" },
           "name": { "type": "string" },
+          "enabled": { "type": "boolean" },
           "accountLocked": { "type": "boolean" },
           "authorities": {
             "type": "array",
@@ -809,6 +811,7 @@
           "lastName": { "type": "string" },
           "dateOfBirth": { "type": "string", "format": "date" },
           "roleId": { "type": "integer", "format": "int32" },
+          "phoneNumber": { "type": "integer", "format": "int32" },
           "gender": { "type": "string" },
           "email": { "type": "string" },
           "address": { "type": "string" },
@@ -870,9 +873,6 @@
         "properties": {
           "totalElements": { "type": "integer", "format": "int64" },
           "totalPages": { "type": "integer", "format": "int32" },
-          "first": { "type": "boolean" },
-          "last": { "type": "boolean" },
-          "numberOfElements": { "type": "integer", "format": "int32" },
           "size": { "type": "integer", "format": "int32" },
           "content": {
             "type": "array",
@@ -880,6 +880,9 @@
           },
           "number": { "type": "integer", "format": "int32" },
           "sort": { "$ref": "#/components/schemas/SortObject" },
+          "first": { "type": "boolean" },
+          "last": { "type": "boolean" },
+          "numberOfElements": { "type": "integer", "format": "int32" },
           "pageable": { "$ref": "#/components/schemas/PageableObject" },
           "empty": { "type": "boolean" }
         }
@@ -889,8 +892,8 @@
         "properties": {
           "offset": { "type": "integer", "format": "int64" },
           "sort": { "$ref": "#/components/schemas/SortObject" },
-          "pageNumber": { "type": "integer", "format": "int32" },
           "pageSize": { "type": "integer", "format": "int32" },
+          "pageNumber": { "type": "integer", "format": "int32" },
           "paged": { "type": "boolean" },
           "unpaged": { "type": "boolean" }
         }

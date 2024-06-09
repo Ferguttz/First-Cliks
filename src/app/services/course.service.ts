@@ -50,4 +50,10 @@ export class CourseService {
       `${environment.apiBase}/courses/tutor/${tutorId}`
     );
   }
+
+  getTutorPublicProfile(tutorId: number) {
+    return this.http.get<TutorProfilePublic>(
+      `${environment.apiBase}/profile/${tutorId}`
+    );
+  }
 }

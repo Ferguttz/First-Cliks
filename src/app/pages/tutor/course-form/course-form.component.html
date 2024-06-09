@@ -121,6 +121,15 @@
             <div *ngIf="imageUrl" class="mt-4">
               <img [src]="imageUrl" alt="Image Preview" class="preview-image" />
             </div>
+            @if (this.courseExists) {
+            <div class="mt-4">
+              <img
+                [src]="this.courseExists.coverPath || '' | apiImg"
+                alt="curso"
+                class="preview-image"
+              />
+            </div>
+            }
           </div>
         </div>
         <div class="w-full lg:w-1/2 xl:w-5/12 lg:pr-10">
@@ -128,7 +137,7 @@
             <h1>@if(courseExists) { Editar } @else { Crear } curso</h1>
 
             @if(errors.length) {
-            <div class="mt-5 alert alert-danger">
+            <div class="mt-5 alert alert-danger text-error">
               <ul>
                 @for (error of errors; track error) {
                 <li>{{ error }}</li>
@@ -150,7 +159,15 @@
                   name="name"
                   formControlName="name"
                 />
-                <div></div>
+                <div
+                  class="text-error"
+                  [hidden]="
+                    form.get('name')?.valid || form.get('name')?.pristine
+                  "
+                >
+                  @if(form.get('name')?.errors?.["required"]) { El Nombre para
+                  el curso es obligatorio }
+                </div>
               </label>
               <label class="form-control w-full max-w-xs">
                 <div class="label">
@@ -171,25 +188,25 @@
               <div class="flex flex-row items-center">
                 <label class="form-control w-auto mr-2">
                   <div class="label">
-                      <span class="label-text">Tecnologías</span>
+                    <span class="label-text">Tecnologías</span>
                   </div>
                   <input
-                      type="text"
-                      placeholder="HTML..."
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      name="techStack2"
-                      #techStack
+                    type="text"
+                    placeholder="HTML..."
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    name="techStack2"
+                    #techStack
                   />
-              </label>
-              <button
+                </label>
+                <button
                   type="button"
                   class="mt-11 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                  (click)="addTechStack(techStack.value)"
-              >
+                  (click)="addTechStack(techStack)"
+                >
                   Añadir
-              </button>
+                </button>
 
-              <!-- Se van poniendo los tags max 3 y se pueden eliminar -->
+                <!-- Se van poniendo los tags max 3 y se pueden eliminar -->
                 <!-- @for (item of techs; track $index) {
                   <span
                     class="bg-white text-black text-xs font-bold leading-sm uppercase px-3 py-1 rounded-full border inline-flex items-center"
@@ -227,47 +244,45 @@
                     </button>
                   </span>
                  } -->
-                 <div class="flex flex-wrap">
+                <div class="flex flex-wrap">
                   @for (item of techs; track $index) {
-                      <div class="mb-2 mr-2">
-                          <span class="inline-flex items-center">
-                              <span class="bg-white text-black text-xs font-bold leading-sm uppercase px-3 py-1 rounded-full border">
-                                  <span>{{ item }}</span>
-                                  <button
-                                      type="button"
-                                      class="inline-flex items-center p-1 ms-2 text-xs text-black shadow-sm -mx-1"
-                                      (click)="deleteTechStack(item)"
-                                      aria-label="Remove"
-                                  >
-                                      <svg
-                                          class="w-2 h-2" 
-                                          aria-hidden="true"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          fill="none"
-                                          viewBox="0 0 14 14"
-                                      >
-                                          <path
-                                              stroke="currentColor"
-                                              stroke-linecap="round"
-                                              stroke-linejoin="round"
-                                              stroke-width="2"
-                                              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                                          />
-                                      </svg>
-                                      <span class="sr-only">Remove badge</span>
-                                  </button>
-                              </span>
-                          </span>
-                      </div>
+                  <div class="mb-2 mr-2">
+                    <span class="inline-flex items-center">
+                      <span
+                        class="bg-white text-black text-xs font-bold leading-sm uppercase px-3 py-1 rounded-full border"
+                      >
+                        <span>{{ item }}</span>
+                        <button
+                          type="button"
+                          class="inline-flex items-center p-1 ms-2 text-xs text-black shadow-sm -mx-1"
+                          (click)="deleteTechStack(item)"
+                          aria-label="Remove"
+                        >
+                          <svg
+                            class="w-2 h-2"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 14 14"
+                          >
+                            <path
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                            />
+                          </svg>
+                          <span class="sr-only">Remove badge</span>
+                        </button>
+                      </span>
+                    </span>
+                  </div>
                   }
+                </div>
               </div>
-              
-              
-
-              
-              
-
-                 
+              <div class="text-error" [hidden]="maxTechStack">
+                No se pueden añadir más de tres tecnologías
               </div>
 
               <label class="form-control w-full">
@@ -280,6 +295,16 @@
                   name="description"
                   formControlName="description"
                 ></textarea>
+                <div
+                  class="text-error"
+                  [hidden]="
+                    form.get('description')?.valid ||
+                    form.get('description')?.pristine
+                  "
+                >
+                  @if(form.get('description')?.errors?.["required"]) { La
+                  descripción para el curso es obligatorio }
+                </div>
               </label>
               <label class="form-control w-full pt-2">
                 <input
@@ -336,10 +361,21 @@
       </svg>
     </button>
     <button class="active">
-      <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
+      <svg
+        class="w-5 h-5 text-gray-800 dark:text-white"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 12h14m-7 7V5"
+        />
       </svg>
-      
     </button>
   </div>
 </div>

@@ -20,6 +20,7 @@ export interface Tutor {
   lastSession?: string;
   name?: string;
   password?: string;
+  phoneNumber?: number;
   photoRoute?: string;
   username?: string;
 }

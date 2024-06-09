@@ -1,3 +1,27 @@
+<div class="relative">
+  <div class="bg-white shadow-md rounded-xl">
+    <div class="flex flex-auto">
+      <div>
+        <img
+          [src]="tutorProfile?.photoRoute || '' | apiImg"
+          alt="Teacher"
+          class="h-36 m-4 object-cover"
+        />
+      </div>
+      <div class="flex flex-auto flex-col justify-between">
+        <div class="m-4">
+          <span class="text-gray-400 mr-3 uppercase text-xs">TUTOR</span>
+          <p class="text-lg font-bold text-black truncate block capitalize">
+            {{ tutorProfile?.firstName }}
+          </p>
+          <p class="text-sm text-black">
+            {{ tutorProfile?.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 @for (course of courses; track course.id) {
 <div class="relative">
   <div

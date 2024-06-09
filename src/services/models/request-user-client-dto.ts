@@ -9,6 +9,7 @@ export interface RequestUserClientDto {
   gender?: string | null;
   lastName?: string | null;
   password?: string | null;
+  phoneNumber?: number | null;
   photoRoute?: string | null;
   roleId?: number | null;
   userName?: string | null;
