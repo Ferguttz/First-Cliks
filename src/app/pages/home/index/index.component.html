@@ -28,10 +28,11 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
           type="text"
           placeholder="Lenguaje de programación"
           class="input bg-white shadow border-black rounded-lg w-full max-w-xs text-black"
+          #tech
         />
 
-        <a
-          href="#"
+        <button
+          (click)="searchTech(tech.value)"
           class="block rounded bg-white px-8 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
         >
           <svg
@@ -50,7 +51,7 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
             <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
             <path d="M21 21l-6 -6" />
           </svg>
-        </a>
+        </button>
       </div>
     </div>
   </div>
@@ -264,9 +265,7 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
 
       <!-- Sobre nosotros -->
       <section class="bg-white">
-        <div
-          class="mx-auto max-w-screen-2xl px-4 pt-12 sm:px-6 lg:px-8 "
-        >
+        <div class="mx-auto max-w-screen-2xl px-4 pt-12 sm:px-6 lg:px-8">
           <div class="md:flex md:items-center md:justify-between">
             <div class="md:w-1/2 md:mr-6">
               <img
@@ -297,7 +296,10 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
                 </p>
                 <div class="mt-10">
                   <p>
-                    Contacta con nosotros: <a href="mailto:firstclicks&#64;gmail.com" class="mail">firstclicks.app&#64;gmail.com</a>
+                    Contacta con nosotros:
+                    <a href="mailto:firstclicks&#64;gmail.com" class="mail"
+                      >firstclicks.app&#64;gmail.com</a
+                    >
                   </p>
                 </div>
               </div>
@@ -319,7 +321,7 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
               <div class="flex flex-col">
                 <!-- Notes -->
 
-                <div class="flex flex-col ">
+                <div class="flex flex-col">
                   <!-- Meet the Team -->
                   <div class="container max-w-7xl px-4">
                     <!-- Section Header -->

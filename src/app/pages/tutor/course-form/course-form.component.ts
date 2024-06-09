@@ -40,7 +40,7 @@ export default class CourseFormComponent implements OnInit {
   techs: Array<string> = new Array<string>();
 
   createCourse: CourseDto = {
-    coverPath: 'Default_Course.jpg',
+    coverPath: '',
     description: '',
     level: undefined,
     name: '',
@@ -75,7 +75,7 @@ export default class CourseFormComponent implements OnInit {
         });
     } else {
       this.form = this.fb.group({
-        coverPath: ['', [Validators.required]],
+        coverPath: ['Default_Course.jpg', [Validators.required]],
         description: ['', [Validators.required]],
         level: ['', [Validators.required]],
         name: ['', [Validators.required]],

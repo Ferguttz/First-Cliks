@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, WritableSignal, inject, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { AuthenticationRequestDto } from '../../../../services/models';
 import { FormsModule, NgForm } from '@angular/forms';
 import { FooterComponent } from '../footer/footer.component';
+import { CourseService } from '../../../services/course.service';
 
 @Component({
   selector: 'app-index',
@@ -25,6 +26,7 @@ export default class IndexComponent {
 
   private authService = inject(AuthService);
   private router = inject(Router);
+  private courseService = inject(CourseService);
 
   authRequest: AuthenticationRequestDto = {
     userName: '',
@@ -49,5 +51,10 @@ export default class IndexComponent {
         }
       },
     });
+  }
+
+  searchTech(tech: string) {
+    this.courseService.setTech(tech);
+    this.router.navigate(['./courses']);
   }
 }
