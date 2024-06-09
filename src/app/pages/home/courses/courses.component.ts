@@ -110,6 +110,7 @@ export default class CoursesComponent implements OnInit, AfterViewInit {
       this.filterEnable = false;
       this.courses2 = undefined;
       this.defaultOrder = order;
+      this.defaultSearch = '';
       this.page = 0;
       this.last = false;
       return this.ngOnInit();
