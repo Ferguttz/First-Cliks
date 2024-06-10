@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, ViewChild  } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthenticationService } from '../../../../services/services';
@@ -13,23 +13,20 @@ import { AccountService } from '../../../services/account.service';
   styleUrl: './signup.component.css',
 })
 export default class SignupComponent {
-
-  @ViewChild('firstNameInput') firstNameInput: ElementRef | undefined;
-  @ViewChild('lastNameInput') lastNameInput: ElementRef | undefined;
-  @ViewChild('userNameInput') userNameInput: ElementRef | undefined;
-  @ViewChild('addressInput') addressInput: ElementRef | undefined;
-  @ViewChild('emailInput') emailInput: ElementRef | undefined;
-  @ViewChild('passwordInput') passwordInput: ElementRef | undefined;
-  @ViewChild('dateOfBirthInput') dateOfBirthInput: ElementRef | undefined;
-  @ViewChild('phoneNumberInput') phoneNumberInput: ElementRef | undefined;
-
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private accountService = inject(AuthenticationService);
   telfClosed = false;
   errors: string[] = [];
 
-  
+  @ViewChild('firstInput', { static: true }) firstInput!: ElementRef;
+
+  // Nada más iniciar se pone el focus en el primer input
+  ngAfterViewInit() {
+    if (this.firstInput) {
+      this.firstInput.nativeElement.focus();
+    }
+  }
 
   form = this.fb.group({
     userName: ['', [Validators.required]],
@@ -46,34 +43,99 @@ export default class SignupComponent {
     phoneNumber: [null],
   });
 
-  ngAfterViewInit() {
-    if (this.firstNameInput) {
-      this.firstNameInput.nativeElement.focus();
-    }
-  }
-    // Autofocus
-    formFieldsOrder = ['firstName', 'lastName', 'userName', 'address', 'email', 'password', 'dateOfBirth', 'address', 'roleId', 'gender'];
+  formFieldsOrder = [
+    'firstName',
+    'lastName',
+    'userName',
+    'address',
+    'email',
+    'password',
+    'dateOfBirth',
+    'roleId',
+    'gender',
+  ];
 
-    goToNextInput(event: KeyboardEvent, currentInputName: string) {
-      if (event.key === 'Enter') {
-        const currentIndex = this.formFieldsOrder.indexOf(currentInputName);
-        const nextIndex = currentIndex + 1;
-  
-        if (nextIndex < this.formFieldsOrder.length) {
-          event.preventDefault();
-          const nextInputName = this.formFieldsOrder[nextIndex];
-          const nextInput = document.querySelector(`[formControlName="${nextInputName}"]`) as HTMLInputElement;
-          if (nextInput) {
-            nextInput.focus();
+  // Hace FOCUS de input a input
+  goToNextInput(event: KeyboardEvent | string, currentInputName: string) {
+    if (typeof event === 'string') {
+      currentInputName = event;
+    } else {
+      if (event instanceof KeyboardEvent && event.key !== 'Enter') {
+        return;
+      }
+      if (event instanceof Event && event.type === 'change') {
+        const nextIndex = this.formFieldsOrder.indexOf(currentInputName) + 1;
+        const nextInputName = this.formFieldsOrder[nextIndex];
+        const nextInput = document.querySelector(
+          `[formControlName="${nextInputName}"]`
+        ) as HTMLInputElement;
+        if (nextInput) {
+          nextInput.focus();
+        }
+        return;
+      }
+      event.preventDefault();
+    }
+
+    console.log('Current input:', currentInputName);
+    const currentIndex = this.formFieldsOrder.indexOf(currentInputName);
+    console.log('Current index:', currentIndex);
+    const nextIndex = currentIndex + 1;
+    console.log('Next index:', nextIndex);
+
+    if (nextIndex < this.formFieldsOrder.length) {
+      const nextInputName = this.formFieldsOrder[nextIndex];
+      console.log('Next input name:', nextInputName);
+      const nextInput = document.querySelector(
+        `[formControlName="${nextInputName}"]`
+      ) as HTMLInputElement;
+      console.log('Next input:', nextInput);
+
+      if (nextInput) {
+        if (nextInput.type === 'radio' && nextInput.value === '2') {
+          const phoneNumberInput = document.querySelector(
+            '[formControlName="phoneNumber"]'
+          ) as HTMLInputElement;
+          if (phoneNumberInput) {
+            phoneNumberInput.focus();
           }
+        } else {
+          nextInput.focus();
         }
       }
     }
+  }
+  //Maneja cuando se hace click en tutor
+  handleTutorClick() {
+    const phoneNumberInput = document.querySelector(
+      '[formControlName="phoneNumber"]'
+    ) as HTMLInputElement;
+    if (phoneNumberInput) {
+      phoneNumberInput.focus();
+    }
+  }
+
+  //Maneja cuando se hace click en el estudiante
+  handleStudentClick() {
+    const genderSelect = document.getElementById('gender') as HTMLSelectElement;
+    if (genderSelect) {
+      genderSelect.focus();
+    }
+  }
+
+  //Maneja el focus del select
+  goToSelect(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      const selectInput = document.querySelector(
+        '#gender'
+      ) as HTMLSelectElement;
+      if (selectInput) {
+        selectInput.focus();
+      }
+    }
+  }
 
 
-  
-
- 
 
   signup() {
     console.log(this.form);

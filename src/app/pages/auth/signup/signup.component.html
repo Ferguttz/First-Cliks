@@ -25,17 +25,21 @@
       </div>
       <div class="w-full lg:w-1/2 py-16 px-12">
         <h2 class="text-3xl mb-4">Regístrate</h2>
-        <p class="mb-4">Crea una cuenta. Sólo tardará unos minutos.</p>
+        <p class="mb-2">Crea una cuenta. Sólo tardarás unos minutos.</p>
         <form action="POST" [formGroup]="form" (ngSubmit)="signup()">
           <div class="grid grid-cols-2 gap-5">
             <!-- INPUT NOMBRE  -->
+
             <input
+              #firstInput
               type="text"
               placeholder="Nombre"
               class="border border-gray-400 py-1 px-2"
               formControlName="firstName"
               (keydown)="goToNextInput($event, 'firstName')"
+              aria-labelledby="name"
             />
+
             <div
               class="text-error"
               [hidden]="
@@ -71,7 +75,6 @@
               class="border border-gray-400 py-1 px-2 w-full"
               formControlName="userName"
               (keydown)="goToNextInput($event, 'userName')"
-
             />
             <div
               class="text-error"
@@ -91,7 +94,6 @@
               class="border border-gray-400 py-1 px-2 w-full"
               formControlName="address"
               (keydown)="goToNextInput($event, 'address')"
-
             />
             <div
               class="text-error"
@@ -111,7 +113,6 @@
               class="border border-gray-400 py-1 px-2 w-full"
               formControlName="email"
               (keydown)="goToNextInput($event, 'email')"
-
             />
             <div
               class="text-error"
@@ -130,7 +131,6 @@
               class="border border-gray-400 py-1 px-2 w-full"
               formControlName="password"
               (keydown)="goToNextInput($event, 'password')"
-
             />
             <div
               class="text-error"
@@ -152,7 +152,6 @@
               class="border border-gray-400 py-1 px-2"
               formControlName="dateOfBirth"
               (keydown)="goToNextInput($event, 'dateOfBirth')"
-
             />
             <div
               class="text-error"
@@ -180,7 +179,11 @@
               formControlName="roleId"
               (click)="mostrarInputTel(true)"
             />
-            <label for="TUTOR" id="custom" class="teacher cursor-pointer"
+            <label
+              for="TUTOR"
+              id="custom"
+              (click)="handleTutorClick()"
+              class="teacher cursor-pointer hover:text-white"
               >TUTOR</label
             >
 
@@ -192,12 +195,16 @@
               formControlName="roleId"
               (click)="mostrarInputTel(false)"
             />
-            <label for="STUDENT" id="custom" class="cursor-pointer student"
+            <label
+              for="STUDENT"
+              id="custom"
+              (click)="handleStudentClick()"
+              class="cursor-pointer student hover:text-white"
               >STUDENT</label
             >
           </div>
           @if (telfClosed) {
-          <div class="mt-5">
+          <div class="mt-4">
             <input
               type="tel"
               placeholder="móvil"
@@ -219,8 +226,8 @@
           </div>
           }
           <!-- CONTROL GENERO -->
-          <div class="mb-3">
-            <label for="gender" class="form-label">Genero</label>
+          <div class="mt-2">
+            <label for="gender" class="form-label">Género</label>
             <select
               type="text"
               class="form-control"
@@ -234,7 +241,7 @@
           </div>
           <div class="mt-5 text-black">
             <input type="checkbox" class="border border-gray-400" />
-            <span
+            <span class="ml-2"
               >Acepto los
               <a href="#" class="font-semibold check-terms"
                 >Terminos y Condiciones</a
@@ -242,7 +249,7 @@
               de uso.</span
             >
           </div>
-          <div class="mt-5">
+          <div class="mt-2">
             <button
               type="submit"
               class="w-full py-3 text-center gradient-text font-bold text-white"
