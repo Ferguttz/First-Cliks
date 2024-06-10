@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild  } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthenticationService } from '../../../../services/services';
@@ -13,11 +13,23 @@ import { AccountService } from '../../../services/account.service';
   styleUrl: './signup.component.css',
 })
 export default class SignupComponent {
+
+  @ViewChild('firstNameInput') firstNameInput: ElementRef | undefined;
+  @ViewChild('lastNameInput') lastNameInput: ElementRef | undefined;
+  @ViewChild('userNameInput') userNameInput: ElementRef | undefined;
+  @ViewChild('addressInput') addressInput: ElementRef | undefined;
+  @ViewChild('emailInput') emailInput: ElementRef | undefined;
+  @ViewChild('passwordInput') passwordInput: ElementRef | undefined;
+  @ViewChild('dateOfBirthInput') dateOfBirthInput: ElementRef | undefined;
+  @ViewChild('phoneNumberInput') phoneNumberInput: ElementRef | undefined;
+
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private accountService = inject(AuthenticationService);
   telfClosed = false;
   errors: string[] = [];
+
+  
 
   form = this.fb.group({
     userName: ['', [Validators.required]],
@@ -34,10 +46,34 @@ export default class SignupComponent {
     phoneNumber: [null],
   });
 
-  // Hacer focus al siguiente elemento
-  nextInput(input: ElementRef) {
-    input.nativeElement.focus();
+  ngAfterViewInit() {
+    if (this.firstNameInput) {
+      this.firstNameInput.nativeElement.focus();
+    }
   }
+    // Autofocus
+    formFieldsOrder = ['firstName', 'lastName', 'userName', 'address', 'email', 'password', 'dateOfBirth', 'address', 'roleId', 'gender'];
+
+    goToNextInput(event: KeyboardEvent, currentInputName: string) {
+      if (event.key === 'Enter') {
+        const currentIndex = this.formFieldsOrder.indexOf(currentInputName);
+        const nextIndex = currentIndex + 1;
+  
+        if (nextIndex < this.formFieldsOrder.length) {
+          event.preventDefault();
+          const nextInputName = this.formFieldsOrder[nextIndex];
+          const nextInput = document.querySelector(`[formControlName="${nextInputName}"]`) as HTMLInputElement;
+          if (nextInput) {
+            nextInput.focus();
+          }
+        }
+      }
+    }
+
+
+  
+
+ 
 
   signup() {
     console.log(this.form);

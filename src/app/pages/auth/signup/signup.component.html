@@ -16,10 +16,10 @@
         </h1>
         <div>
           <p class="text-white">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            suspendisse aliquam varius rutrum purus maecenas ac Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Aenean suspendisse
-            aliquam varius rutrum purus maecenas ac
+            Únete a nuestra comunidad educativa y comienza tu ruta de
+            aprendizaje. Con nuestra plataforma, tendrás acceso a distitnos
+            cursos. Estamos aquí para ayudarte a desarrollar tus habilidades y
+            alcanzar tus metas en el mundo digital.
           </p>
         </div>
       </div>
@@ -34,6 +34,7 @@
               placeholder="Nombre"
               class="border border-gray-400 py-1 px-2"
               formControlName="firstName"
+              (keydown)="goToNextInput($event, 'firstName')"
             />
             <div
               class="text-error"
@@ -50,6 +51,7 @@
               placeholder="Apellido"
               class="border border-gray-400 py-1 px-2"
               formControlName="lastName"
+              (keydown)="goToNextInput($event, 'lastName')"
             />
             <div
               class="text-error"
@@ -68,6 +70,8 @@
               placeholder="Usuario"
               class="border border-gray-400 py-1 px-2 w-full"
               formControlName="userName"
+              (keydown)="goToNextInput($event, 'userName')"
+
             />
             <div
               class="text-error"
@@ -86,6 +90,8 @@
               placeholder="Dirección"
               class="border border-gray-400 py-1 px-2 w-full"
               formControlName="address"
+              (keydown)="goToNextInput($event, 'address')"
+
             />
             <div
               class="text-error"
@@ -104,6 +110,8 @@
               placeholder="Email"
               class="border border-gray-400 py-1 px-2 w-full"
               formControlName="email"
+              (keydown)="goToNextInput($event, 'email')"
+
             />
             <div
               class="text-error"
@@ -121,6 +129,8 @@
               placeholder="Contraseña"
               class="border border-gray-400 py-1 px-2 w-full"
               formControlName="password"
+              (keydown)="goToNextInput($event, 'password')"
+
             />
             <div
               class="text-error"
@@ -141,6 +151,8 @@
               placeholder="Fecha"
               class="border border-gray-400 py-1 px-2"
               formControlName="dateOfBirth"
+              (keydown)="goToNextInput($event, 'dateOfBirth')"
+
             />
             <div
               class="text-error"
@@ -152,7 +164,7 @@
               @if(form.get('dateOfBirth')?.errors?.["dateOfBirth"]) { fecha
               nacimiento obligatorio }
             </div>
-           <!-- <input
+            <!-- <input
               type="number"
               placeholder="Número de teléfono"
               class="border border-gray-400 py-1 px-2"
