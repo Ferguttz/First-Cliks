@@ -15,6 +15,7 @@ import { CourseCardComponent } from '../shared/course-card/course-card.component
 import { RouterModule } from '@angular/router';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FormsModule, NgForm } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-courses',
@@ -23,7 +24,7 @@ import { FormsModule, NgForm } from '@angular/forms';
     CourseCardComponent,
     RouterModule,
     InfiniteScrollModule,
-    FormsModule,
+    FormsModule,  CommonModule
   ],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css',
@@ -42,6 +43,17 @@ export default class CoursesComponent implements OnInit, AfterViewInit {
   defaultFilter: string = 'tech';
   defaultOrder: string = 'updatedDate';
   defaultSearch: string = '';
+
+  isSmallScreen = false;
+
+  // Cambio de diseño en la portada dependiendo de tamaño de la pantalla
+  constructor() {
+    // Detectar el tamaño de la pantalla
+    this.isSmallScreen = window.innerWidth <= 1272;
+    window.addEventListener('resize', () => {
+      this.isSmallScreen = window.innerWidth <= 1272; 
+    });
+  }
 
   ngOnInit(): void {
     // this.courseService.getLastCourses().subscribe((courses) => {
