@@ -150,7 +150,7 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
   </div>
 </div> -->
 
-<div id="modal1" class="modalmask" [hidden]="isClosed">
+<div id="modal1" class="modalmask" [hidden]="isClosed" (transitionend)="onModalTransitionEnd()">
   <div class="modalbox movedown">
     <div class="text-black login">
       <div class="flex flex-col lg:flex-row lg:w-6/12 rounded-xl mx-auto shadow-lg overflow-hidden">
@@ -180,14 +180,14 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
             </div>
             <div class="mt-5">
               Usuario
-              <input type="text" placeholder="Email" class="border border-gray-400 py-1 px-2 w-full" [(ngModel)]="authRequest.userName" #userName="ngModel" required="" name="userName" />
+              <input type="text" placeholder="Email" #userNameInput class="border border-gray-400 py-1 px-2 w-full" [(ngModel)]="authRequest.userName" #userName="ngModel" required="" name="userName" (keydown.enter)="focusPassword()"/>
             </div>
             <div class="text-error" [hidden]="password.valid || password.pristine">
               @if(password.errors?.['required']) { La contraseña es obligatoria }
             </div>
             <div class="mt-5">
               Contraseña
-              <input type="password" placeholder="Contraseña" class="border border-gray-400 py-1 px-2 w-full" [(ngModel)]="authRequest.password" required="" #password="ngModel" name="password" />
+              <input type="password" #passwordInput placeholder="Contraseña" class="border border-gray-400 py-1 px-2 w-full" [(ngModel)]="authRequest.password" required="" #password="ngModel" name="password" />
             </div>
 
             <div class="mt-5 text-black">

@@ -1,4 +1,11 @@
-import { Component, WritableSignal, inject, signal } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  WritableSignal,
+  inject,
+  signal,
+} from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { AuthenticationRequestDto } from '../../../../services/models';
@@ -14,9 +21,27 @@ import { CourseService } from '../../../services/course.service';
   styleUrl: './index.component.css',
 })
 export default class IndexComponent {
+  @ViewChild('userNameInput') userNameInput: ElementRef | undefined;
+  @ViewChild('passwordInput') passwordInput: ElementRef | undefined;
   courses = './courses';
   course = './course';
   isClosed = false;
+  constructor(private elementRef: ElementRef) {}
+
+  // Comprueba si el modal está abierto, en ese caso hace un focus en el primer elemento input
+  onModalTransitionEnd() {
+    if (!this.isClosed && this.userNameInput) {
+      this.userNameInput.nativeElement.focus();
+    }
+  }
+  // Hace focus al input de la contraseña (por defecto al submit)
+  focusPassword() {
+    const passwordInput: HTMLInputElement =
+      this.elementRef.nativeElement.querySelector('input[type=password]');
+    if (passwordInput) {
+      passwordInput.focus();
+    }
+  }
 
   click() {
     this.isClosed = true;
