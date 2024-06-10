@@ -59,7 +59,7 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
 <!-- Fin de portada -->
 
 <!-- Prueba de model para que se deslize el login-->
-<div id="modal1" class="modalmask" [hidden]="isClosed">
+<!-- <div id="modal1" class="modalmask" [hidden]="isClosed">
   <div class="modalbox movedown">
     <a href="#close" title="Close" class="close">X</a>
     <div class="text-black login">
@@ -148,7 +148,68 @@ https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid
       </div>
     </div>
   </div>
+</div> -->
+
+<div id="modal1" class="modalmask" [hidden]="isClosed">
+  <div class="modalbox movedown">
+    <div class="text-black login">
+      <div class="flex flex-col lg:flex-row lg:w-6/12 rounded-xl mx-auto shadow-lg overflow-hidden">
+        <div class="w-full lg:w-1/2 flex flex-col items-center signup justify-center p-12 bg-no-repeat bg-cover bg-center" style="background-image: url('assets/logo.png'); background-size: 50%"></div>
+        <div class="w-full lg:w-1/2 py-16 px-12 bg-white relative">
+          <a href="#close" title="Close" class="close absolute top-0 right-0 mr-4 mt-4">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+            </svg>
+            
+          </a>
+          <h2 class="text-3xl mb-4">Iniciar Sesión</h2>
+          <p class="mb-4">Inicia sesión para acceder a tu cuenta.</p>
+          <form #form="ngForm" (ngSubmit)="login(form)">
+            @if (errors.length) {
+            <div class="text-error">
+              <ul>
+                @for (error of errors; track error) {
+                <li>{{ error }}</li>
+                }
+              </ul>
+            </div>
+            }
+            <div class="text-error" [hidden]="userName.valid || userName.pristine">
+              @if( userName.errors?.['required'] ) { El Usuario es obligatorio }
+              @else if (userName.errors?.['email']) { Ingrese un Usuario válido }
+            </div>
+            <div class="mt-5">
+              Usuario
+              <input type="text" placeholder="Email" class="border border-gray-400 py-1 px-2 w-full" [(ngModel)]="authRequest.userName" #userName="ngModel" required="" name="userName" />
+            </div>
+            <div class="text-error" [hidden]="password.valid || password.pristine">
+              @if(password.errors?.['required']) { La contraseña es obligatoria }
+            </div>
+            <div class="mt-5">
+              Contraseña
+              <input type="password" placeholder="Contraseña" class="border border-gray-400 py-1 px-2 w-full" [(ngModel)]="authRequest.password" required="" #password="ngModel" name="password" />
+            </div>
+
+            <div class="mt-5 text-black">
+              <span>
+                Aún no tiene cuenta.
+                <a [routerLink]="['/auth/signup']" routerLinkActive="router-link-active" class="font-semibold check-terms">
+                  Regístrese aquí.</a>
+              </span>
+            </div>
+
+            <div class="mt-5">
+              <button class="w-full py-3 text-center font-bold signup text-white">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
 <!-- Fin del modal de login -->
 
 <!-- Sección que contiene sección de profesores mejor valorados, about us y get to know the team-->
