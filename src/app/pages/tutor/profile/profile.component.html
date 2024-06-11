@@ -82,7 +82,7 @@
             class="py-3 flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4"
           >
             <button
-              class="bg-info-btn bg-info-hover text-white py-2 px-4 rounded inline-flex items-center"
+              class="bg-info-btn bg-info-hover text-white py-2 px-4 rounded-full inline-flex items-center"
             >
               <svg
                 fill="#ffffff"
@@ -112,7 +112,7 @@
                   </g>
                 </g>
               </svg>
-              <span class="pl-2" [routerLink]="['/tutor/chats']"
+              <span class="pl-2 " [routerLink]="['/tutor/chats']"
                 >Contactar</span
               >
             </button>
@@ -262,7 +262,7 @@
                   <span class="tracking-wide">Mis cursos</span>
                 </div>
                 <button
-                  class="bg-info-btn py-1 px-2 rounded text-white"
+                  class="bg-info-btn btn-sm rounded-full text-white"
                   [routerLink]="['/tutor/courses']"
                 >
                   Ver todos mis cursos
