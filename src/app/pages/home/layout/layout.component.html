@@ -27,11 +27,15 @@
         @if (user?.role == "TUTOR") {
         <li class="font-bold"><a routerLink="/tutor/chats">Mis chats</a></li>
         <li><a routerLink="/tutor/profile">Mi perfil (profesor)</a></li>
-
         <!---->
         } @if (user?.role == "STUDENT") {
         <li><a>Mi perfil (alumno)</a></li>
         <li><a routerLink="{{ chats }}">Mis chats</a></li>
+        }
+        @if (user) {
+        <li>
+          <a class="">Perfil</a>
+        </li>
         }
         <li>
           <a (click)="logout()" class="">Cerrar sesión</a>
@@ -52,7 +56,6 @@
       @if (user?.role == "TUTOR") {
       <li><a routerLink="/tutor/profile">Mi perfil (profesor)</a></li>
       <li><a routerLink="/tutor/chats">Mis chats</a></li>
-
       <!---->
       } @if (user?.role == "STUDENT") {
       <li><a routerLink="/student/profile">Mi perfil (alumno)</a></li>
@@ -62,7 +65,7 @@
   </div>
   @if (user) {
   <div id="nav-button" class="navbar-end pr-12">
-    <a class="btn"
+    <a class="btn rounded-full bg-slate-100 border border-slate-100"
       >{{ user.userName }}
       @if (user.role == "TUTOR") {
       <img
@@ -73,13 +76,6 @@
       }
     </a>
   </div>
-
-  <div id="nav-button" class="navbar-end pr-36">
-    <a (click)="logout()" class="btn signup border-none text-white rounded-full"
-      >Cerrar sesión</a
-    >
-  </div>
-
   } @else {
   <div id="nav-button" class="navbar-end pr-36 text-black">
     <a href="#modal1" class="">Inicia Sesión </a>
