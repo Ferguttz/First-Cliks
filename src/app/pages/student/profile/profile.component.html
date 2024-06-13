@@ -5,7 +5,7 @@
   defer
 ></script>
 
-<div class="bg-gray-100">
+<div class="bg-gray-100  min-h-screen w-full">
   <div class="container mx-auto mb-5 p-5">
     <div class="md:flex no-wrap md:-mx-2">
       <!-- Left Side -->
@@ -128,7 +128,7 @@
         <!-- Experience and education -->
         <div class="bg-white p-3 shadow-sm rounded-sm">
           <div class="grid grid-cols-2">
-            <div>
+            <!-- <div>
               <div
                 class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3"
               >
@@ -171,7 +171,7 @@
                   Mis Cursos
                 </button>
               </ul>
-            </div>
+            </div> -->
             <div>
               <div
                 class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3"
@@ -197,7 +197,7 @@
                     />
                   </svg>
                 </span>
-                <span class="tracking-wide">Cursos activos</span>
+                <span class="tracking-wide">Mis cursos</span>
               </div>
               <p-carousel
                 [value]="courses"
@@ -207,6 +207,7 @@
                 [responsiveOptions]="responsiveOptions"
                 autoplayInterval="3000"
               >
+              
                 <ng-template let-course pTemplate="item">
                   <div class="border-1 surface-border border-round m-2 p-3">
                     <div class="mb-3">
@@ -227,6 +228,9 @@
                   </div>
                 </ng-template>
               </p-carousel>
+              <button class="btn" [routerLink]="['/student/courses']">
+                Mis Cursos
+              </button>
             </div>
           </div>
           <!-- End of Experience and education grid -->

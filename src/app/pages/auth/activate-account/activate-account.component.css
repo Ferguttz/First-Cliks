@@ -2,7 +2,3 @@
   background-color: #6569e2;
 }
 
-.tippy-box[data-theme~='tomato'] {
-    background-color: tomato;
-    color: yellow;
-  }

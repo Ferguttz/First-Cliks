@@ -31,8 +31,7 @@
         } @if (user?.role == "STUDENT") {
         <li><a>Mi perfil (alumno)</a></li>
         <li><a routerLink="{{ chats }}">Mis chats</a></li>
-        }
-        @if (user) {
+        } @if (user) {
         <li>
           <a class="">Perfil</a>
         </li>
@@ -64,7 +63,7 @@
     </ul>
   </div>
   @if (user) {
-  <div id="nav-button" class="navbar-end pr-12">
+  <!-- <div id="nav-button" class="navbar-end pr-12">
     <a class="btn rounded-full bg-slate-100 border border-slate-100"
       >{{ user.userName }}
       @if (user.role == "TUTOR") {
@@ -73,9 +72,33 @@
         class="w-8 rounded-full"
         src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
       />
+      }  -->
+
+  <!-- Botón de navegación con nombre de usuario y foto para TUTOR -->
+   
+  <div id="nav-button " class="navbar-end pr-12">
+    <a class="btn rounded-full  bg-slate-100 border border-slate-100" tabindex="0" role="button" >
+      {{ user.userName }}
+      @if (user.role == "TUTOR") {
+      <img
+        alt="Foto de perfil"
+        class="w-8 rounded-full"
+        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+      />
       }
     </a>
+    <!-- Dropdown content -->
+    <ul
+      id="dropdownMenu"
+      class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 hidden"
+    >
+      <!-- Opción para cerrar sesión -->
+      <li>
+        <a (click)="logout()" class="">Cerrar sesión</a>
+      </li>
+    </ul>
   </div>
+
   } @else {
   <div id="nav-button" class="navbar-end pr-36 text-black">
     <a href="#modal1" class="">Inicia Sesión </a>
