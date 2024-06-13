@@ -63,34 +63,28 @@
     </ul>
   </div>
   @if (user) {
-  <!-- <div id="nav-button" class="navbar-end pr-12">
-    <a class="btn rounded-full bg-slate-100 border border-slate-100"
-      >{{ user.userName }}
-      @if (user.role == "TUTOR") {
-      <img
-        alt="Tailwind CSS Navbar component"
-        class="w-8 rounded-full"
-        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-      />
-      }  -->
-
-  <!-- Botón de navegación con nombre de usuario y foto para TUTOR -->
-   
-  <div id="nav-button " class="navbar-end pr-12">
-    <a class="btn rounded-full  bg-slate-100 border border-slate-100" tabindex="0" role="button" >
-      {{ user.userName }}
-      @if (user.role == "TUTOR") {
-      <img
-        alt="Foto de perfil"
-        class="w-8 rounded-full"
-        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-      />
-      }
-    </a>
-    <!-- Dropdown content -->
+  <div class="dropdown nav-button pr-12 navbar-end">
+    <div tabindex="0" role="button">
+      <div class="">
+        <a
+          class="btn rounded-full ml-20 bg-slate-100 border border-slate-100"
+          tabindex="0"
+          role="button"
+        >
+          {{ user.userName }}
+          @if (user.role == "TUTOR") {
+          <img
+            alt="Foto de perfil"
+            class="w-8 rounded-full"
+            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+          />
+          }
+        </a>
+      </div>
+    </div>
     <ul
-      id="dropdownMenu"
-      class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 hidden"
+      tabindex="0"
+      class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
     >
       <!-- Opción para cerrar sesión -->
       <li>
