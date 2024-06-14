@@ -200,6 +200,7 @@ export default class CourseFormComponent implements OnInit {
   //     this.techs.push(form.value.techStack1);
   //   }
   //   (this.createCourse);
+  //   (this.createCourse);
   //   this.courseTutorAdmin
   //     .create({
   //       body: this.createCourse,

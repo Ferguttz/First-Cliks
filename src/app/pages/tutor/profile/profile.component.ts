@@ -7,10 +7,11 @@ import {
 } from '../../../../services/models';
 import { CommonModule } from '@angular/common';
 import { ApiImgPipe } from '../../../shared/api-img.pipe';
+
+import { CourseCardComponent } from '../../home/shared/course-card/course-card.component';
 import { Router, RouterModule } from '@angular/router';
 import { TutorService } from '../../../services/tutor.service';
 import CourseComponent from '../../home/course/course.component';
-import { CourseCardComponent } from '../../home/shared/course-card/course-card.component';
 
 interface Course {
   id: string;
@@ -22,6 +23,7 @@ interface Course {
 @Component({
   selector: 'app-profile',
   standalone: true,
+
   imports: [
     CarouselModule,
     CommonModule,
@@ -35,9 +37,11 @@ interface Course {
 })
 export default class ProfileComponent {
   private tutorProfileService = inject(ProfileService);
+
   private courseTutorService = inject(TutorService);
   private router = inject(Router);
   tutorProfile: TutorPrivateProfileDto = {};
+
   courses: CoursePublicDto[] = [];
   responsiveOptions: any[] = [];
   profileHidden = true;
@@ -65,8 +69,13 @@ export default class ProfileComponent {
       this.courses = courses;
     });
 
+    this.courseTutorService.getListCourses().subscribe((courses) => {
+      this.courses = courses;
+    });
+
     this.tutorProfileService.getProfileTutor().subscribe((tutor) => {
       this.tutorProfile = tutor;
+      this.tutorProfile;
     });
   }
 

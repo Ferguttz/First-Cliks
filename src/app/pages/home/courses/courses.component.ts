@@ -26,6 +26,8 @@ import { CommonModule } from '@angular/common';
     InfiniteScrollModule,
     FormsModule,
     CommonModule,
+    FormsModule,
+    CommonModule,
   ],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css',
@@ -53,12 +55,14 @@ export default class CoursesComponent implements OnInit, AfterViewInit {
     this.isSmallScreen = window.innerWidth <= 1272;
     window.addEventListener('resize', () => {
       this.isSmallScreen = window.innerWidth <= 1272;
+      this.isSmallScreen = window.innerWidth <= 1272;
     });
   }
 
   ngOnInit(): void {
     // this.courseService.getLastCourses().subscribe((courses) => {
     //   this.courses = courses;
+    //   (this.courses);
     //   (this.courses);
     // });
     this.courseService.getTech.subscribe((tech) => (this.defaultSearch = tech));
