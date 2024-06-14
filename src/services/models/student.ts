@@ -22,7 +22,7 @@ export interface Student {
   lastSession?: string;
   name?: string;
   password?: string;
-  phoneNumber?: number;
+  phoneNumber?: string;
   photoRoute?: string;
   username?: string;
 }

@@ -64,8 +64,7 @@ export default class CourseFormComponent implements OnInit {
             name: [course.name, [Validators.required]],
             techStack: [course.techStack, [Validators.required]],
           });
-          console.log(this.form);
-          console.log(this.form.get('techStack')?.value);
+
           if (Array.isArray(this.form.get('techStack')?.value)) {
             this.form.get('techStack')?.value.forEach((element: any) => {
               let item: string = element.techStack;
@@ -123,7 +122,6 @@ export default class CourseFormComponent implements OnInit {
   contador = 0;
   maxTechStack = true;
   addTechStack(techInput: HTMLInputElement) {
-    console.log(techInput);
     if (this.contador < 3) {
       this.techs.push(techInput.value);
       techInput.value = '';
@@ -144,7 +142,7 @@ export default class CourseFormComponent implements OnInit {
 
   save() {
     this.form?.get('techStack')?.setValue(this.techs);
-    console.log(this.form);
+
     if (this.form!.invalid) {
       if (this.form?.get('techStack')?.status == 'INVALID') {
         this.errors.push('Debe de introducir al menos una tecnología');
@@ -201,7 +199,8 @@ export default class CourseFormComponent implements OnInit {
   //   if (form.value.techStack3 != '') {
   //     this.techs.push(form.value.techStack1);
   //   }
-  //   console.log(this.createCourse);
+  //   (this.createCourse);
+  //   (this.createCourse);
   //   this.courseTutorAdmin
   //     .create({
   //       body: this.createCourse,

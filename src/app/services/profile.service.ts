@@ -30,4 +30,11 @@ export class ProfileService {
       `${environment.apiBase}/profile/${id}`
     );
   }
+
+  putTutorPublicProfile(tutor: TutorProfilePublic) {
+    return this.http.put<TutorProfilePublic>(
+      `${environment.apiBase}/tutor/profile`,
+      tutor
+    );
+  }
 }

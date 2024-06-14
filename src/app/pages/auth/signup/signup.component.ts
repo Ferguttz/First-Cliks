@@ -77,19 +77,16 @@ export default class SignupComponent {
       event.preventDefault();
     }
 
-    console.log('Current input:', currentInputName);
     const currentIndex = this.formFieldsOrder.indexOf(currentInputName);
-    console.log('Current index:', currentIndex);
+
     const nextIndex = currentIndex + 1;
-    console.log('Next index:', nextIndex);
 
     if (nextIndex < this.formFieldsOrder.length) {
       const nextInputName = this.formFieldsOrder[nextIndex];
-      console.log('Next input name:', nextInputName);
+
       const nextInput = document.querySelector(
         `[formControlName="${nextInputName}"]`
       ) as HTMLInputElement;
-      console.log('Next input:', nextInput);
 
       if (nextInput) {
         if (nextInput.type === 'radio' && nextInput.value === '2') {
@@ -135,10 +132,7 @@ export default class SignupComponent {
     }
   }
 
-
-
   signup() {
-    console.log(this.form);
     if (this.form.invalid) {
       if (this.form.get('role')?.status == 'INVALID') {
         this.errors.push('No ha selecionado tipo de usuario TUTOR | ALUMNO');
@@ -151,7 +145,6 @@ export default class SignupComponent {
         this.router.navigate(['/auth/activate-account']);
       },
       error: (error) => {
-        console.log(error);
         if (error.error.status === 400) {
           if (error.error.error) {
             this.errors = error.error.error;
@@ -175,6 +168,5 @@ export default class SignupComponent {
       this.form.controls['phoneNumber'].clearValidators();
     }
     this.form.controls['phoneNumber'].updateValueAndValidity();
-    console.log(this.form);
   }
 }

@@ -75,7 +75,6 @@ export default class ProfileComponent implements OnInit {
 
     this.studentProfileService.getProfileStudent().subscribe((student) => {
       this.studentProfile = student;
-      console.log(this.studentProfile);
     });
   }
 
