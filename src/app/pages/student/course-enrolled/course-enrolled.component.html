@@ -86,7 +86,7 @@
 
 <!-- CAMBIOS -->
 
-<div class="bg-gray-100  min-h-screen w-full">
+<div class="bg-gray-100 min-h-screen w-full">
   <div class="container mx-auto mb-5 p-5">
     <div class="md:flex no-wrap md:-mx-2">
       <!-- Left Side -->
@@ -192,11 +192,45 @@
           >
             <!-- STARS -->
             <h1>Valoración</h1>
-            <p-rating
-              [stars]="5"
-              [cancel]="false"
-              formControlName="studentStars"
-            ></p-rating>
+
+            <div class="rating">
+              <input
+                type="radio"
+                name="rating-2"
+                class="mask mask-star-2 bg-orange-400"
+                value="1"
+                formControlName="studentStars"
+              />
+              <input
+                type="radio"
+                name="rating-2"
+                class="mask mask-star-2 bg-orange-400"
+                checked
+                value="2"
+                formControlName="studentStars"
+              />
+              <input
+                type="radio"
+                name="rating-2"
+                class="mask mask-star-2 bg-orange-400"
+                value="3"
+                formControlName="studentStars"
+              />
+              <input
+                type="radio"
+                name="rating-2"
+                class="mask mask-star-2 bg-orange-400"
+                value="4"
+                formControlName="studentStars"
+              />
+              <input
+                type="radio"
+                name="rating-2"
+                class="mask mask-star-2 bg-orange-400"
+                value="5"
+                formControlName="studentStars"
+              />
+            </div>
 
             <!-- TEXTAREA -->
             <h1>Reseña</h1>

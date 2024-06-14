@@ -61,7 +61,6 @@ export default class IndexComponent {
   errors: string[] = [];
 
   login(form: NgForm) {
-    console.log(form.value);
     if (form.invalid) {
       return;
     }

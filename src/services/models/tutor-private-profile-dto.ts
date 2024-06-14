@@ -11,5 +11,5 @@ export interface TutorPrivateProfileDto {
   lastName?: string;
   photoRoute?: string;
   username?: string;
-  phoneNumber?: number;
+  phoneNumber?: string;
 }

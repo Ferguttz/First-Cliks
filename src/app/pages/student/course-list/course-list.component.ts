@@ -20,7 +20,6 @@ export default class CourseListComponent implements OnInit {
     this.studentService
       .getListCourses()
       .subscribe((courses: StudentCourseDto[]) => {
-        console.log(courses);
         this.studentCourses = courses;
         // this.studentCourses.forEach((student) => {
         //   this.courses?.push(student.courseEnrolled);

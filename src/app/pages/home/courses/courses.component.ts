@@ -24,7 +24,8 @@ import { CommonModule } from '@angular/common';
     CourseCardComponent,
     RouterModule,
     InfiniteScrollModule,
-    FormsModule,  CommonModule
+    FormsModule,
+    CommonModule,
   ],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css',
@@ -51,19 +52,18 @@ export default class CoursesComponent implements OnInit, AfterViewInit {
     // Detectar el tamaño de la pantalla
     this.isSmallScreen = window.innerWidth <= 1272;
     window.addEventListener('resize', () => {
-      this.isSmallScreen = window.innerWidth <= 1272; 
+      this.isSmallScreen = window.innerWidth <= 1272;
     });
   }
 
   ngOnInit(): void {
     // this.courseService.getLastCourses().subscribe((courses) => {
     //   this.courses = courses;
-    //   console.log(this.courses);
+    //   (this.courses);
     // });
     this.courseService.getTech.subscribe((tech) => (this.defaultSearch = tech));
 
     if (this.defaultSearch != '') {
-      console.log(this.defaultSearch);
       this.buscar(this.defaultFilter, this.defaultSearch, this.defaultOrder);
       this.filterEnable = true;
     } else {
@@ -71,7 +71,6 @@ export default class CoursesComponent implements OnInit, AfterViewInit {
         this.courses2 = coursePage.content;
         this.page = coursePage.number;
         this.last = coursePage.last;
-        console.log(coursePage.content);
       });
     }
   }
@@ -117,7 +116,6 @@ export default class CoursesComponent implements OnInit, AfterViewInit {
   }
 
   buscar(filter: string, search: string, order: string) {
-    console.log(search);
     if (search == '') {
       this.filterEnable = false;
       this.courses2 = undefined;
@@ -140,7 +138,6 @@ export default class CoursesComponent implements OnInit, AfterViewInit {
         this.courses2 = course.content;
         this.page = course.number;
         this.last = course.last;
-        console.log(this.courses2);
       });
   }
 }

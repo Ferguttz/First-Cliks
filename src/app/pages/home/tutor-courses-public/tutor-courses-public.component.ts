@@ -30,7 +30,6 @@ export default class TutorCoursesPublicComponent implements OnInit {
         .getCoursesByTutorId(parseInt(tutorId))
         .subscribe((courses) => {
           this.courses = courses;
-          console.log(this.courses);
         });
 
       this.courseService
