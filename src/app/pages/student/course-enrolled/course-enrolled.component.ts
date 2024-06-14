@@ -50,13 +50,13 @@ export default class CourseEnrolledComponent implements OnInit {
         .getStudentCourseById(parseInt(this.courseId))
         .subscribe((course) => {
           this.courseEnrolled = course.courseEnrolled;
-          console.log(this.courseEnrolled);
+          this.courseEnrolled;
         });
     }
   }
 
   save() {
-    console.log(this.form);
+    this.form;
     if (this.form!.invalid) {
       return;
     }

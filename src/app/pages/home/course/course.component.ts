@@ -68,7 +68,7 @@ export default class CourseComponent implements OnInit {
       this.courseService.getById(parseInt(courseId)).subscribe((course) => {
         this.course = course;
         this.randTutor(course.tutor?.id);
-        console.log(this.course);
+        this.course;
       });
     }
   }
@@ -76,12 +76,12 @@ export default class CourseComponent implements OnInit {
   randTutor(turoId: number | undefined) {
     this.courseService.getRandomTutor(turoId || 0).subscribe((tutor) => {
       this.randomTutor = tutor;
-      console.log(this.randomTutor);
+      this.randomTutor;
     });
   }
 
   login(form: NgForm) {
-    console.log(form.value);
+    form.value;
     if (form.invalid) {
       return;
     }
