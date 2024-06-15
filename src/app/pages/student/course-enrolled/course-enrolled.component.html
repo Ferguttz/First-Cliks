@@ -111,7 +111,9 @@
             class="flex flex-col max-w-64 gap-2"
           >
             <!-- STARS -->
-            <h1>Valoración</h1>
+             <div class="ml-6">
+            <h1 class="mt-4 font-bold mb-1">Valoración</h1>
+            <p class="text-ellipsis-gray-600 mb-2 text-gray-600">Selecciona las estrellas que le quieres dejar a este curso.</p>
 
             <div class="rating">
               <input
@@ -148,13 +150,14 @@
             </div>
 
             <!-- TEXTAREA -->
-            <h1>Reseña</h1>
+            <h1 class="mt-4 font-bold mb-2">Reseña</h1>
             <textarea
               class="textarea textarea-bordered"
               placeholder="Cuéntanos cómo te ha ido o una breve descripción del curso para enriquecer las opiniones sobre este curso."
               formControlName="studentReview"
             ></textarea>
-            <button class="btn btn-active btn-primary">Enviar</button>
+            <button class="btn signup border-none text-white rounded-full px-5">Enviar</button>
+          </div>
           </form>
         </div>
       </div>
